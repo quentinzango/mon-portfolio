@@ -1,0 +1,153 @@
+{
+  
+  "common": {
+    "welcome": "Bienvenue sur mon portfolio",
+    "home": "Accueil",
+    "gallery": "Galerie",
+    "about": "À propos",
+    "projects": "Projets",
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact",
+    "readMore": "Lire la suite",
+    "viewProject": "Voir le projet",
+    "allProjects": "Tous les projets",
+    "backToHome": "Retour à l'accueil",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "success": "Succès",
+    "close": "Fermer",
+    "send": "Envoyer",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "subject": "Sujet",
+    "submit": "Envoyer",
+    "sending": "Envoi en cours...",
+    "sendMessage": "Envoyer un message",
+    "getInTouch": "Restez en contact",
+    "followMe": "Suivez-moi",
+    "allRightsReserved": "Tous droits réservés"
+  },
+  "home": {
+    "title": "Développeur Web et Mobile & Designer UI/UX",
+    "subtitle": "Je crée des expériences numériques exceptionnelles",
+    "cta": "Voir mon travail",
+    "aboutTitle": "À propos de moi",
+    "aboutText": "Développeur passionné avec une expertise en création d'applications web et mobiles modernes et réactives.",
+    "servicesTitle": "Mes services",
+    "projectsTitle": "Projets récents",
+    "testimonialsTitle": "Ce que disent mes clients",
+    "contactTitle": "Travaillons ensemble",
+    "contactText": "Vous avez un projet en tête ? Discutons-en !"
+  },
+  "about": {
+    "title": "À propos de moi",
+    "intro": "Développeur Web passionné par la création d'expériences numériques exceptionnelles.",
+    "skillsTitle": "Compétences",
+    "experienceTitle": "Expérience",
+    "educationTitle": "Formation",
+    "downloadCv": "Télécharger mon CV"
+  },
+  "projects": {
+    "title": "Mes Projets",
+    "subtitle": "Une sélection de mes réalisations récentes",
+    "filterAll": "Tous",
+    "filterWeb": "Web",
+    "filterMobile": "Mobile",
+    "filterDesign": "Design",
+    "viewDetails": "Voir les détails",
+    "technologies": "Technologies utilisées",
+    "client": "Client",
+    "year": "Année",
+    "category": "Catégorie",
+    "visitWebsite": "Visiter le site"
+  },
+  "services": {
+    "title": "Mes Services",
+    "subtitle": "Ce que je peux faire pour vous",
+    "webDevelopment": {
+      "title": "Développement Web",
+      "description": "Création de sites web modernes et réactifs avec les dernières technologies."
+    },
+    "mobileDevelopment": {
+      "title": "Développement Mobile",
+      "description": "Applications mobiles natives et cross-plateformes pour iOS et Android."
+    },
+    "uiUxDesign": {
+      "title": "Design UI/UX",
+      "description": "Conception d'interfaces utilisateur intuitives et d'expériences utilisateur exceptionnelles."
+    },
+    "seo": {
+      "title": "Référencement SEO",
+      "description": "Optimisation pour les moteurs de recherche pour améliorer votre visibilité en ligne."
+    },
+    "maintenance": {
+      "title": "Maintenance & Support",
+      "description": "Services de maintenance continue et support technique pour votre site ou application."
+    }
+  },
+  "contact": {
+    "title": "Contactez-moi",
+    "subtitle": "Discutons de votre projet",
+    "contactInfo": "Informations de contact",
+    "contactDescription": "N'hésitez pas à me contacter pour toute question.",
+    "formTitle": "Envoyez-moi un message",
+    "successMessage": "Message envoyé avec succès ! Je vous répondrai dès que possible.",
+    "errorMessage": "Erreur lors de l'envoi du message. Veuillez réessayer.",
+    "form": {
+      "name": "Nom complet",
+      "email": "Email",
+      "service": "Type de service",
+      "selectService": "Sélectionnez un service",
+      "webDev": "Développement Web",
+      "mobileDev": "Développement Mobile",
+      "consulting": "Consulting",
+      "message": "Votre message",
+      "sending": "Envoi en cours...",
+      "submit": "Envoyer le message"
+    },
+    "faq": {
+      "title": "Questions fréquemment posées",
+      "questions": {
+        "typesDeProjets": {
+          "question": "Quels types de projets prenez-vous en charge ?",
+          "answer": "Je me spécialise dans le développement web et mobile, y compris les sites vitrines, les applications web, les applications mobiles cross-plateformes, et les solutions sur mesure pour les entreprises."
+        },
+        "delai": {
+          "question": "Quel est votre délai de livraison moyen ?",
+          "answer": "Le délai dépend de la complexité du projet. Un site vitrine simple peut prendre 2-3 semaines, tandis qu'une application personnalisée peut nécessiter plusieurs mois. Je vous fournirai un calendrier détaillé après analyse de vos besoins."
+        },
+        "maintenance": {
+          "question": "Proposez-vous un service de maintenance ?",
+          "answer": "Oui, je propose différents forfaits de maintenance incluant mises à jour, corrections de bugs et support technique. Nous pouvons discuter d'une solution adaptée à vos besoins."
+        },
+        "paiement": {
+          "question": "Quelles sont vos méthodes de paiement ?",
+          "answer": "J'accepte les virements bancaires, PayPal et les paiements par carte de crédit. Un acompte est généralement demandé avant le début du projet, le solde étant dû à la livraison."
+        }
+      }
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Articles et tutoriels sur le développement web et mobile",
+    "readMore": "Lire la suite",
+    "noPosts": "Aucun article disponible pour le moment",
+    "categories": "Catégories",
+    "recentPosts": "Articles récents",
+    "tags": "Étiquettes"
+  },
+  "footer": {
+    "about": "À propos",
+    "quickLinks": "Liens rapides",
+    "services": "Services",
+    "newsletter": "Newsletter",
+    "subscribe": "S'abonner",
+    "yourEmail": "Votre email",
+    "subscribeText": "Abonnez-vous pour recevoir les dernières mises à jour et actualités.",
+    "allRightsReserved": "Tous droits réservés",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation"
+  }
+}

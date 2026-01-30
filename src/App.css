@@ -1,0 +1,335 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animation pour les liens de la navbar */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Animation pour le menu déroulant */
+.dropdown-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.dropdown-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms, transform 200ms;
+}
+
+.dropdown-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 200ms, transform 200ms;
+}
+
+
+/* Animation de transition pour le diaporama */
+.slide-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 0.5s ease-in-out;
+}
+
+.slide-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.slide-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Style pour les boutons de navigation */
+.slider-nav-button {
+  transition: all 0.3s ease;
+}
+
+.slider-nav-button:hover {
+  transform: scale(1.1);
+}
+
+/* Style pour les indicateurs de diapositive */
+.slider-dot {
+  transition: all 0.3s ease;
+}
+
+.slider-dot:hover {
+  transform: scale(1.2);
+}
+
+/* Dans votre fichier CSS principal */
+.service-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.service-icon {
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1);
+}
+
+/* Active NavLink styles */
+.nav-link {
+  transition: all 0.3s ease;
+}
+
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hover effect for service cards */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Styles pour le bouton de retour en haut */
+.back-to-top {
+  transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation pour le bouton de retour en haut */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.back-to-top {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Styles pour les cartes de projet */
+.project-card {
+  transition: all 0.3s ease;
+  min-height: 500px;
+  display: flex;
+}
+
+/* Conteneur d'image */
+.project-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 500px;
+  flex: 0 0 50%; /* Prend 50% de la largeur */
+}
+
+/* Image du projet */
+.project-image {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+/* Contenu de la carte */
+.project-content {
+  flex: 0 0 50%; /* Prend 50% de la largeur */
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Pour les écrans mobiles */
+@media (max-width: 767px) {
+  .project-image-container {
+    height: 400px;  /* Hauteur fixe sur mobile */
+    min-height: 400px;
+    width: 100%;  /* Pleine largeur sur mobile */
+    flex: none;  /* Réinitialise flex pour mobile */
+  }
+  
+  .project-image-container {
+    height: 500px;
+    min-height: 500px;
+    flex: 0 0 auto;
+  }
+  
+  .project-content {
+    flex: 0 0 auto;
+    height: auto;
+  }
+}
+
+
+
+/* Animation de base pour le défilement */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Styles des cartes de projet */
+.project-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Conteneur d'image avec effet parallaxe */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.project-image, .parallax-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Animation du texte */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation des éléments de la liste */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-list-item {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .project-card {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .project-image-container {
+    height: 300px;
+    min-height: 300px;
+  }
+  
+  .project-content {
+    padding: 1.5rem;
+  }
+}
+
+
+
+.faq-enter {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+.faq-enter-active {
+  opacity: 1;
+  max-height: 1000px;
+  transition: opacity 300ms, max-height 300ms;
+}
+.faq-exit {
+  opacity: 1;
+  max-height: 1000px;
+}
+.faq-exit-active {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 300ms, max-height 300ms;
+}

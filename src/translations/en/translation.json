@@ -1,0 +1,33 @@
+{
+  "navbar": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "projects": "PROJECTS",
+    "services": "SERVICES",
+    "gallery": "GALLERY",
+    "blog": "BLOG",
+    "contact": "CONTACT"
+  },
+
+  "footer": {
+    "bio": "Full Stack Developer passionate about creating innovative web solutions.",
+    "contact": "Contact",
+    "follow": "Follow Me",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "backToTop": "Back to top"
+  },
+
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "Discover a selection of my most recent and relevant projects. Each project represents a unique challenge and learning opportunity.",
+    "technologies": "Technologies Used",
+    "keyFeatures": "Key Features",
+    "viewDemo": "View Demo",
+    "viewCode": "View Code",
+    "liveDemo": "Live Demo",
+    "developer": "developer",
+    "developers": "developers"
+  }
+}

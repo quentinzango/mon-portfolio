@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
-import im12 from '../assets/im13png';
-const heroImage = im13
+import im13 from '../assets/im13.png';
+const heroImage = im13;
 
 const Home = () => {
   const { t } = useTranslation();

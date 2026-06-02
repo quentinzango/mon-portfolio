@@ -42,49 +42,73 @@ const Home = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      {/* Hero Section */}
-      <section className="relative py-8 sm:py-12">
-        <div>
-          <AnimatedSection>
-            <div className="text-center glass-panel rounded-3xl p-8 sm:p-12">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-4xl font-extrabold bg-gradient-to-r from-indigo-600 via-cyan-500 to-emerald-500 text-transparent bg-clip-text sm:text-5xl sm:tracking-tight lg:text-6xl leading-tight"
-              >
-                {t('home.title', 'Développeur Full Stack Passionné')}
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="mt-6 max-w-3xl mx-auto text-xl text-slate-600"
-              >
-                {t('home.subtitle', 'Je crée des expériences web exceptionnelles avec des technologies modernes.')}
-              </motion.p>
+      {/* Hero */}
+      <section className="relative py-6 sm:py-10">
+        <AnimatedSection>
+          <div className="glass-panel glow-ring rounded-3xl p-8 sm:p-12 lg:p-14 overflow-hidden relative">
+            <div
+              className="absolute top-0 right-0 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"
+              aria-hidden="true"
+            />
+            <div className="relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+              <div className="text-center lg:text-left">
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="section-eyebrow"
+                >
+                  Innovation · Design · Code
+                </motion.span>
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-display font-bold gradient-text leading-[1.1] tracking-tight"
+                >
+                  {t('home.title', 'Développeur Full Stack Passionné')}
+                </motion.h1>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="mt-6 text-lg sm:text-xl text-theme-muted max-w-xl mx-auto lg:mx-0"
+                >
+                  {t('home.subtitle', 'Je crée des expériences web exceptionnelles avec des technologies modernes.')}
+                </motion.p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.35 }}
+                  className="mt-10 flex flex-wrap justify-center lg:justify-start gap-4"
+                >
+                  <Link to="/projects" className="btn-glow">
+                    {t('home.seeProjects', 'Voir mes projets')}
+                  </Link>
+                  <Link to="/contact" className="btn-ghost">
+                    {t('home.contactMe', 'Me contacter')}
+                  </Link>
+                </motion.div>
+              </div>
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="mt-10 flex justify-center space-x-4"
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="relative flex justify-center"
               >
-                <Link
-                  to="/projects"
-                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                  {t('home.seeProjects', 'Voir mes projets')}
-                </Link>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                  {t('home.contactMe', 'Me contacter')}
-                </Link>
+                <div className="glow-ring rounded-2xl p-[3px] max-w-md w-full">
+                  <div className="rounded-2xl overflow-hidden bg-slate-900/80 p-2">
+                    <img
+                      src={heroImage}
+                      alt="Zango Quentin"
+                      className="w-full h-auto rounded-xl animate-float"
+                      loading="eager"
+                    />
+                  </div>
+                </div>
               </motion.div>
             </div>
-          </AnimatedSection>
-        </div>
+          </div>
+        </AnimatedSection>
       </section>
 
       {/* Compétences */}
@@ -92,10 +116,11 @@ const Home = () => {
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
             <div className="text-center">
-              <h2 className="text-3xl font-extrabold bg-gradient-to-r from-indigo-600 via-cyan-500 to-emerald-500 text-transparent bg-clip-text">
+              <span className="section-eyebrow">Stack technique</span>
+              <h2 className="mt-4 text-3xl sm:text-4xl font-display font-bold gradient-text">
                 {t('home.skillsTitle', 'Mes Compétences')}
               </h2>
-              <p className="mt-4 max-w-2xl text-xl text-slate-600 mx-auto">
+              <p className="mt-4 max-w-2xl text-lg text-theme-muted mx-auto">
                 {t('home.skillsSubtitle', 'Technologies que je maîtrise')}
               </p>
             </div>
@@ -110,10 +135,8 @@ const Home = () => {
                     <MagneticButton
                       active={isActive}
                       onClick={() => setOpenSkillCategory(category.id)}
-                      className={`w-full px-6 py-5 rounded-2xl border transition-colors ${
-                        isActive
-                          ? "border-indigo-200 bg-gradient-to-r from-indigo-50/70 via-cyan-50/60 to-emerald-50/60"
-                          : "border-slate-200/80 bg-white/60 hover:bg-white/80"
+                      className={`w-full px-6 py-5 rounded-2xl border border-slate-700/40 bg-slate-900/30 hover:border-cyan-500/30 transition-colors ${
+                        isActive ? '' : ''
                       }`}
                     >
                       <div className="flex items-center justify-between gap-4">
@@ -121,7 +144,7 @@ const Home = () => {
                           <span className="text-2xl" aria-hidden="true">
                             {category.icon}
                           </span>
-                          <h3 className={`text-lg font-semibold ${isActive ? "text-indigo-800" : "text-slate-900"}`}>
+                          <h3 className={`text-lg font-semibold ${isActive ? "text-cyan-300" : "text-theme"}`}>
                             {category.title}
                           </h3>
                         </div>
@@ -146,11 +169,11 @@ const Home = () => {
             >
               <div
                 aria-hidden="true"
-                className="absolute -top-16 -right-24 w-80 h-80 rounded-full bg-indigo-200/30 blur-3xl"
+                className="absolute -top-16 -right-24 w-80 h-80 rounded-full bg-cyan-500/15 blur-3xl"
               />
               <div
                 aria-hidden="true"
-                className="absolute -bottom-20 -left-24 w-80 h-80 rounded-full bg-cyan-200/20 blur-3xl"
+                className="absolute -bottom-20 -left-24 w-80 h-80 rounded-full bg-violet-500/15 blur-3xl"
               />
 
               <div className="relative">
@@ -159,8 +182,8 @@ const Home = () => {
                     {activeCategory.icon}
                   </span>
                   <div>
-                    <h3 className="text-2xl font-extrabold text-slate-900">{activeCategory.title}</h3>
-                    <p className="text-slate-600 mt-1">
+                    <h3 className="text-2xl font-display font-bold text-theme">{activeCategory.title}</h3>
+                    <p className="text-theme-muted mt-1">
                       Clique sur une catégorie pour afficher les technologies.
                     </p>
                   </div>
@@ -191,9 +214,9 @@ const Home = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.15 }}
-                      className="mt-8 flex items-center gap-3 text-slate-700"
+                      className="mt-8 flex items-center gap-3 text-theme-muted"
                     >
-                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-r from-indigo-50 to-cyan-50 border border-indigo-100">
+                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-cyan-500/10 border border-cyan-500/25">
                         ✨
                       </span>
                       <p className="text-sm sm:text-base">
@@ -226,10 +249,11 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-12 lg:mb-0"
               >
-                <h2 className="text-3xl font-extrabold bg-gradient-to-r from-indigo-600 via-cyan-500 to-emerald-500 text-transparent bg-clip-text">
+                <span className="section-eyebrow">Profil</span>
+                <h2 className="mt-4 text-3xl font-display font-bold gradient-text">
                   {t('home.aboutTitle', 'À propos de moi')}
                 </h2>
-                <div className="mt-6 space-y-6 text-slate-600">
+                <div className="mt-6 space-y-6 text-theme-muted">
                   <p>
                     {t('home.aboutText1', 'Développeur passionné avec une expérience dans la création d\'applications web et mobiles réactives.')}
                   </p>
@@ -240,7 +264,7 @@ const Home = () => {
                 <div className="mt-8">
                   <Link
                     to="/about"
-                    className="text-base font-medium text-blue-600 hover:text-blue-500"
+                    className="text-base font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
                   >
                     {t('home.learnMore', 'En savoir plus →')}
                   </Link>
@@ -253,6 +277,7 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
                 className="relative"
               >
+                <div className="glow-ring rounded-2xl p-[2px]">
                 <div className="relative rounded-2xl overflow-hidden glass-card p-2">
                   <img
                     className="w-full h-auto rounded-xl"
@@ -260,6 +285,7 @@ const Home = () => {
                     alt="À propos de moi"
                     loading="lazy"
                   />
+                </div>
                 </div>
               </motion.div>
             </div>

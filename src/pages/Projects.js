@@ -91,6 +91,7 @@ const Projects = () => {
   return (
     <div className="max-w-7xl mx-auto">
       <PageHeader
+        badge="Réalisations"
         title={t('projects.title', 'Mes Projets')}
         subtitle={t('projects.subtitle', 'Découvrez une sélection de mes projets les plus récents.')}
       />

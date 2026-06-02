@@ -75,6 +75,7 @@ const Contact = () => {
   return (
     <div className="max-w-7xl mx-auto">
       <PageHeader
+        badge="Collaboration"
         title={t('contact.title', 'Contactez-moi')}
         subtitle={t('contact.subtitle', 'Discutons de votre projet')}
       />
@@ -84,10 +85,10 @@ const Contact = () => {
           <div className="space-y-8">
             <div className="glass-panel rounded-2xl p-8">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                <h2 className="text-2xl font-display font-bold text-theme mb-6">
                   {t('contact.contactInfo', 'Informations de contact')}
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-theme-muted">
                   {t('contact.contactDescription', 'N\'hésitez pas à me contacter pour toute question.')}
                 </p>
               </div>
@@ -100,8 +101,8 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                    <p className="text-gray-600">quentinzango470@gmail.com</p>
+                    <h3 className="text-lg font-medium text-theme">Email</h3>
+                    <p className="text-theme-muted">quentinzango470@gmail.com</p>
                   </div>
                 </div>
 
@@ -112,10 +113,10 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-gray-900">WhatsApp</h3>
+                    <h3 className="text-lg font-medium text-theme">WhatsApp</h3>
                     <button
                       onClick={openWhatsApp}
-                      className="text-blue-600 hover:text-blue-800 hover:underline flex items-center"
+                      className="text-cyan-400 hover:text-cyan-300 hover:underline flex items-center"
                     >
                       <span>Envoyer un message</span>
                       <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -131,10 +132,8 @@ const Contact = () => {
 
         <AnimatedSection delay={0.2} noAnimation={isSubmitting}>
           <div className="glass-card-strong p-8 rounded-2xl">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100/70 text-blue-700 text-xs font-semibold mb-4">
-              Message direct
-            </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <span className="section-eyebrow mb-4">Message direct</span>
+            <h2 className="text-2xl font-display font-bold text-theme mb-6">
                 {t('contact.formTitle', 'Envoyez-moi un message')}
             </h2>
               
@@ -242,16 +241,16 @@ const Contact = () => {
       {/* Section FAQ */}
       <AnimatedSection>
         <div className="max-w-3xl mx-auto mt-16 glass-panel rounded-2xl p-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl font-display font-bold text-center gradient-text mb-12">
             {t('contact.faq.title', 'Questions fréquemment posées')}
           </h2>
             
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="rounded-xl border border-slate-200/80 bg-white/70 px-5 py-4">
+              <div key={index} className="rounded-xl border border-slate-700/40 bg-slate-900/30 px-5 py-4 hover:border-cyan-500/25 transition-colors">
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="flex justify-between items-center w-full text-left text-lg font-medium text-gray-900 focus:outline-none"
+                  className="flex justify-between items-center w-full text-left text-lg font-medium text-theme focus:outline-none"
                 >
                   <span>{faq.question}</span>
                   <svg
@@ -266,7 +265,7 @@ const Contact = () => {
                   </svg>
                 </button>
                 <div 
-                  className={`mt-4 text-gray-600 transition-all duration-300 ease-in-out ${
+                    className={`mt-4 text-theme-muted transition-all duration-300 ease-in-out ${
                     openFaqIndex === index ? 'block' : 'hidden'
                   }`}
                 >

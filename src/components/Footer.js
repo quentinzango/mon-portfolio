@@ -40,12 +40,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white pt-12 pb-8 px-4 sm:px-6 lg:px-8">
+    <footer className="footer-futuristic text-white pt-12 pb-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Colonne 1: Nom et compétences */}
           <div>
-            <h3 className="text-xl font-bold mb-4">ZANGO QUENTIN</h3>
+            <h3 className="text-xl font-display font-bold mb-4 gradient-text">ZANGO QUENTIN</h3>
             <p className="text-gray-400 mb-4">
               {t('footer.bio', 'Développeur Full Stack passionné par la création de solutions web innovantes.')}
             </p>
@@ -141,7 +141,7 @@ const Footer = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110"
+          className="fixed bottom-6 right-6 btn-glow !p-3 !rounded-full shadow-lg transform hover:scale-110"
           aria-label={t('footer.backToTop', 'Retour en haut')}
         >
           <FaArrowUp />

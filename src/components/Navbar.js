@@ -4,26 +4,23 @@ import { useState, useRef, useEffect } from 'react';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
-  const [isOpen, setIsOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Fermer le menu déroulant quand on clique en dehors
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
+        setLangOpen(false);
       }
     }
-
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    setIsOpen(false);
+    setLangOpen(false);
   };
 
   const languages = [
@@ -32,94 +29,89 @@ export default function Navbar() {
   ];
 
   const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
-
-  // Animation pour les liens de la navbar
   const navItems = ['home', 'about', 'projects', 'services', 'contact'];
 
   return (
-    <nav className="bg-gray-800 text-white px-8 py-4 flex justify-between items-center">
-      <h1 className="font-bold text-xl">ZANGO QUENTIN</h1>
-      <div className="flex items-center space-x-6">
-        <div className="hidden md:flex space-x-6">
-          {navItems.map((item) => (
-            <div key={item} className="group relative overflow-hidden">
-              <NavLink 
+    <nav className="nav-glass sticky top-0 z-50 px-4 sm:px-8 py-4">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <NavLink to="/" className="font-display font-bold text-lg sm:text-xl tracking-tight">
+          <span className="gradient-text">ZANGO QUENTIN</span>
+        </NavLink>
+
+        <div className="flex items-center gap-4 sm:gap-6">
+          <div className="hidden md:flex items-center gap-1">
+            {navItems.map((item) => (
+              <NavLink
+                key={item}
                 to={item === 'home' ? '/' : `/${item}`}
-                className={({ isActive }) => 
-                  `nav-link px-3 py-2 rounded-md text-sm font-medium ${
-                    isActive 
-                      ? 'bg-gray-900 text-white' 
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                  }`
+                className={({ isActive }) =>
+                  `nav-link-futuristic ${isActive ? 'active' : ''}`
                 }
               >
                 {t(`common.${item}`)}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"></span>
               </NavLink>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Menu mobile */}
-        <div className="md:hidden">
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+            type="button"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5"
+            aria-label="Menu"
           >
-            <svg
-              className="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-        </div>
 
-        {/* Sélecteur de langue avec menu déroulant */}
-        <div className="relative" ref={dropdownRef}>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center space-x-2 focus:outline-none group"
-          >
-            <span className="text-xl" aria-hidden="true">{currentLanguage.flag}</span>
-            <span className="text-sm hidden sm:inline">{currentLanguage.code.toUpperCase()}</span>
-            <svg
-              className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+          <div className="relative" ref={dropdownRef}>
+            <button
+              type="button"
+              onClick={() => setLangOpen(!langOpen)}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-700/50 bg-white/5 hover:border-cyan-500/30 transition-colors"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-
-          {/* Menu déroulant */}
-          <div 
-            className={`absolute right-0 mt-2 w-40 bg-gray-700 rounded-md shadow-lg overflow-hidden transition-all duration-200 ease-in-out z-50 ${
-              isOpen 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 -translate-y-2 pointer-events-none'
-            }`}
-          >
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => changeLanguage(lang.code)}
-                className={`w-full text-left px-4 py-2 text-sm flex items-center space-x-2 hover:bg-gray-600 transition-colors duration-200 ${
-                  i18n.language === lang.code ? 'bg-gray-600' : ''
-                }`}
-              >
-                <span className="text-lg" aria-hidden="true">{lang.flag}</span>
-                <span>{lang.name}</span>
-              </button>
-            ))}
+              <span className="text-lg" aria-hidden="true">{currentLanguage.flag}</span>
+              <span className="text-sm text-slate-300 hidden sm:inline">{currentLanguage.code.toUpperCase()}</span>
+            </button>
+            <div
+              className={`absolute right-0 mt-2 w-40 rounded-xl overflow-hidden border border-slate-700/50 bg-slate-900/95 backdrop-blur-xl shadow-2xl z-50 transition-all duration-200 ${
+                langOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
+              }`}
+            >
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  type="button"
+                  onClick={() => changeLanguage(lang.code)}
+                  className={`w-full text-left px-4 py-2.5 text-sm flex items-center gap-2 hover:bg-white/5 ${
+                    i18n.language === lang.code ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300'
+                  }`}
+                >
+                  <span>{lang.flag}</span>
+                  <span>{lang.name}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
+      {menuOpen && (
+        <div className="md:hidden mt-4 pt-4 border-t border-slate-700/50 flex flex-col gap-1">
+          {navItems.map((item) => (
+            <NavLink
+              key={item}
+              to={item === 'home' ? '/' : `/${item}`}
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                `nav-link-futuristic block ${isActive ? 'active' : ''}`
+              }
+            >
+              {t(`common.${item}`)}
+            </NavLink>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }

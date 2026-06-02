@@ -9,7 +9,7 @@ const ProjectCard = ({ project }) => {
 
   return (
     <motion.div 
-      className="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 mb-12"
+      className="project-card project-card-futuristic mb-12"
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300 }}
     >
@@ -35,16 +35,16 @@ const ProjectCard = ({ project }) => {
         {/* Partie droite - Détails du projet */}
         <div className="project-content p-8 md:w-1/2">
           <div className="flex justify-between items-start mb-4">
-            <h3 className="text-2xl font-bold text-gray-800">{project.title}</h3>
-            <span className="text-sm text-gray-500 flex items-center">
+            <h3 className="text-2xl font-display font-bold text-theme">{project.title}</h3>
+            <span className="text-sm text-theme-muted flex items-center">
               <FaCalendarAlt className="mr-1" /> {project.year}
             </span>
           </div>
 
-          <p className="text-gray-600 mb-6">{project.description}</p>
+          <p className="text-theme-muted mb-6">{project.description}</p>
 
           <div className="mb-6">
-            <h4 className="text-sm font-semibold text-gray-700 mb-2">
+            <h4 className="text-sm font-semibold text-cyan-400/90 mb-2">
               {t('projects.technologies', 'Technologies utilisées')}:
             </h4>
             <div className="flex flex-wrap gap-2">
@@ -55,7 +55,7 @@ const ProjectCard = ({ project }) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="tech-badge bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full hover:bg-blue-200 transition-colors"
+                  className="tech-badge text-xs px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20 transition-colors"
                 >
                   {tech}
                 </motion.span>
@@ -64,10 +64,10 @@ const ProjectCard = ({ project }) => {
           </div>
 
           <div className="mb-6">
-            <h4 className="text-sm font-semibold text-gray-700 mb-2">
+            <h4 className="text-sm font-semibold text-cyan-400/90 mb-2">
               {t('projects.keyFeatures', 'Fonctionnalités clés')}:
             </h4>
-            <ul className="list-disc pl-5 text-gray-600 space-y-1">
+            <ul className="list-disc pl-5 text-theme-muted space-y-1">
               {project.features.map((feature, index) => (
                 <motion.li 
                   key={index}
@@ -83,13 +83,13 @@ const ProjectCard = ({ project }) => {
             </ul>
           </div>
 
-          <div className="flex justify-between items-center pt-4 border-t border-gray-200">
-            <div className="flex items-center text-sm text-gray-500">
+          <div className="flex justify-between items-center pt-4 border-t border-slate-700/50">
+            <div className="flex items-center text-sm text-theme-muted">
               <FaUsers className="mr-1" />
               <span>{project.teamSize} {project.teamSize > 1 ? t('projects.developers', 'développeurs') : t('projects.developer', 'développeur')}</span>
             </div>
             {project.client && (
-              <div className="text-sm text-gray-500 flex items-center">
+              <div className="text-sm text-theme-muted flex items-center">
                 <FaUserTie className="mr-1" />
                 <span>{project.client}</span>
               </div>
@@ -104,7 +104,7 @@ const ProjectCard = ({ project }) => {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                className="btn-ghost !px-4 !py-2 text-sm"
               >
                 <FaGithub className="mr-2" />
                 {t('projects.viewCode', 'Voir le code')}
@@ -115,7 +115,7 @@ const ProjectCard = ({ project }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => window.open(project.demoUrl, '_blank')}
-                className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                className="btn-glow !px-4 !py-2 text-sm"
               >
                 <FaExternalLinkAlt className="mr-2" />
                 {t('projects.liveDemo', 'Voir en ligne')}

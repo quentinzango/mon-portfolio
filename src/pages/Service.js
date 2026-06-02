@@ -49,6 +49,7 @@ const Services = () => {
   return (
     <div className="max-w-7xl mx-auto">
       <PageHeader
+        badge="Expertise"
         title={t('services.title', 'Mes Services')}
         subtitle={t('services.subtitle', 'Des solutions sur mesure pour répondre à vos besoins numériques')}
       />
@@ -62,8 +63,8 @@ const Services = () => {
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-400 rounded-t-xl" />
                 <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <h3 className="text-xl font-display font-bold text-theme mb-3">{service.title}</h3>
+                <p className="text-theme-muted">{service.description}</p>
               </motion.div>
             </AnimatedSection>
           ))}
@@ -72,20 +73,17 @@ const Services = () => {
         <AnimatedSection>
           <div className="mt-16 glass-panel rounded-2xl p-8">
             <div className="text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-display font-bold gradient-text mb-4">
                 {t('services.cta.title', 'Prêt à démarrer votre projet ?')}
               </h2>
-              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              <p className="text-theme-muted mb-6 max-w-2xl mx-auto">
                 {t('services.cta.description', 'Contactez-moi pour discuter de votre projet et voir comment je peux vous aider à le concrétiser.')}
               </p>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
+                <Link to="/contact" className="btn-glow">
                   {t('services.cta.button', 'Me contacter')}
                 </Link>
               </motion.div>

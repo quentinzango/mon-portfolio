@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
+import MagneticButton from '../components/MagneticButton';
 const heroImage = 'https://placehold.co/1200x800/png?text=Portfolio';
 
 const Home = () => {
@@ -36,6 +37,8 @@ const Home = () => {
     }
   ];
 
+  const activeCategory = skillCategories.find((c) => c.id === openSkillCategory) || skillCategories[0];
+
   return (
     <div className="max-w-7xl mx-auto">
       {/* Hero Section */}
@@ -47,7 +50,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl leading-tight"
+                className="text-4xl font-extrabold bg-gradient-to-r from-indigo-600 via-cyan-500 to-emerald-500 text-transparent bg-clip-text sm:text-5xl sm:tracking-tight lg:text-6xl leading-tight"
               >
                 {t('home.title', 'Développeur Full Stack Passionné')}
               </motion.h1>
@@ -55,7 +58,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="mt-6 max-w-3xl mx-auto text-xl text-gray-500"
+                className="mt-6 max-w-3xl mx-auto text-xl text-slate-600"
               >
                 {t('home.subtitle', 'Je crée des expériences web exceptionnelles avec des technologies modernes.')}
               </motion.p>
@@ -85,58 +88,127 @@ const Home = () => {
 
       {/* Compétences */}
       <section className="py-12">
-        <div>
+        <div className="max-w-6xl mx-auto">
           <AnimatedSection>
             <div className="text-center">
-              <h2 className="text-3xl font-extrabold text-gray-900">
+              <h2 className="text-3xl font-extrabold bg-gradient-to-r from-indigo-600 via-cyan-500 to-emerald-500 text-transparent bg-clip-text">
                 {t('home.skillsTitle', 'Mes Compétences')}
               </h2>
-              <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+              <p className="mt-4 max-w-2xl text-xl text-slate-600 mx-auto">
                 {t('home.skillsSubtitle', 'Technologies que je maîtrise')}
               </p>
             </div>
           </AnimatedSection>
 
-          <div className="mt-12 max-w-4xl mx-auto space-y-4">
-            {skillCategories.map((category, index) => {
-              const isOpen = openSkillCategory === category.id;
-
-              return (
-                <AnimatedSection key={category.id} delay={index * 0.1}>
-                  <motion.div
-                    whileHover={{ y: -2 }}
-                    className="glass-card rounded-2xl overflow-hidden"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setOpenSkillCategory(isOpen ? null : category.id)}
-                      className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-blue-50/60 transition-colors"
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 items-start">
+            <div className="space-y-3">
+              {skillCategories.map((category, index) => {
+                const isActive = openSkillCategory === category.id;
+                return (
+                  <AnimatedSection key={category.id} delay={index * 0.07}>
+                    <MagneticButton
+                      active={isActive}
+                      onClick={() => setOpenSkillCategory(category.id)}
+                      className={`w-full px-6 py-5 rounded-2xl border transition-colors ${
+                        isActive
+                          ? "border-indigo-200 bg-gradient-to-r from-indigo-50/70 via-cyan-50/60 to-emerald-50/60"
+                          : "border-slate-200/80 bg-white/60 hover:bg-white/80"
+                      }`}
                     >
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl" aria-hidden="true">{category.icon}</span>
-                        <h3 className="text-lg font-semibold text-gray-900">{category.title}</h3>
-                      </div>
-                      <span className={`text-xl text-blue-700 transition-transform ${isOpen ? 'rotate-180' : ''}`}>⌄</span>
-                    </button>
-
-                    {isOpen && (
-                      <div className="px-6 pb-6">
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
-                          {category.items.map((item) => (
-                            <span
-                              key={item}
-                              className="inline-flex justify-center items-center px-3 py-2 rounded-lg text-sm font-medium bg-blue-50 text-blue-800 border border-blue-100"
-                            >
-                              {item}
-                            </span>
-                          ))}
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl" aria-hidden="true">
+                            {category.icon}
+                          </span>
+                          <h3 className={`text-lg font-semibold ${isActive ? "text-indigo-800" : "text-slate-900"}`}>
+                            {category.title}
+                          </h3>
                         </div>
+                        <span
+                          className={`text-xl transition-transform ${isActive ? "rotate-180" : ""}`}
+                          aria-hidden="true"
+                        >
+                          ⌄
+                        </span>
                       </div>
-                    )}
+                    </MagneticButton>
+                  </AnimatedSection>
+                );
+              })}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="glass-card-strong rounded-3xl p-8 relative overflow-hidden"
+            >
+              <div
+                aria-hidden="true"
+                className="absolute -top-16 -right-24 w-80 h-80 rounded-full bg-indigo-200/30 blur-3xl"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute -bottom-20 -left-24 w-80 h-80 rounded-full bg-cyan-200/20 blur-3xl"
+              />
+
+              <div className="relative">
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl" aria-hidden="true">
+                    {activeCategory.icon}
+                  </span>
+                  <div>
+                    <h3 className="text-2xl font-extrabold text-slate-900">{activeCategory.title}</h3>
+                    <p className="text-slate-600 mt-1">
+                      Clique sur une catégorie pour afficher les technologies.
+                    </p>
+                  </div>
+                </div>
+
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeCategory.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.25 }}
+                    className="mt-8"
+                  >
+                    <div className="flex flex-wrap gap-3">
+                      {activeCategory.items.map((item) => (
+                        <motion.span
+                          key={item}
+                          whileHover={{ y: -3, scale: 1.02 }}
+                          className="skill-chip"
+                        >
+                          {item}
+                        </motion.span>
+                      ))}
+                    </div>
+
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.15 }}
+                      className="mt-8 flex items-center gap-3 text-slate-700"
+                    >
+                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-r from-indigo-50 to-cyan-50 border border-indigo-100">
+                        ✨
+                      </span>
+                      <p className="text-sm sm:text-base">
+                        {activeCategory.id === "languages"
+                          ? "Langages orientés front/back, scripts et données."
+                          : activeCategory.id === "frameworks"
+                          ? "Frameworks & outils pour construire des interfaces modernes."
+                          : activeCategory.id === "sgbd"
+                          ? "SGBD et services pour stocker, synchroniser et exploiter les données."
+                          : "Compétences complémentaires pour livrer un projet de A à Z."}
+                      </p>
+                    </motion.div>
                   </motion.div>
-                </AnimatedSection>
-              );
-            })}
+                </AnimatePresence>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -153,10 +225,10 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-12 lg:mb-0"
               >
-                <h2 className="text-3xl font-extrabold text-gray-900">
+                <h2 className="text-3xl font-extrabold bg-gradient-to-r from-indigo-600 via-cyan-500 to-emerald-500 text-transparent bg-clip-text">
                   {t('home.aboutTitle', 'À propos de moi')}
                 </h2>
-                <div className="mt-6 space-y-6 text-gray-600">
+                <div className="mt-6 space-y-6 text-slate-600">
                   <p>
                     {t('home.aboutText1', 'Développeur passionné avec une expérience dans la création d\'applications web modernes et réactives.')}
                   </p>

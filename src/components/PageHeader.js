@@ -10,7 +10,7 @@ export default function PageHeader({ title, subtitle }) {
       className="text-center mb-14"
     >
       <div className="glass-panel inline-block px-8 py-10 sm:px-12 rounded-3xl max-w-4xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-slate-800 sm:text-5xl tracking-tight">
+        <h1 className="text-4xl font-extrabold bg-gradient-to-r from-indigo-600 via-cyan-500 to-emerald-500 text-transparent bg-clip-text sm:text-5xl tracking-tight">
           {title}
         </h1>
         {subtitle && (

@@ -1,9 +1,9 @@
 // src/pages/Projects.js
 import React from 'react';
-import { motion } from 'framer-motion';  // Ajoutez cette ligne
 import { useTranslation } from 'react-i18next';
 import ProjectCard from '../components/ProjectCard';
 import AnimatedSection from '../components/AnimatedSection';
+import PageHeader from '../components/PageHeader';
 const im7 = 'https://placehold.co/1200x800/png?text=Projet+1';
 const im8 = 'https://placehold.co/1200x800/png?text=Projet+2';
 const im9 = 'https://placehold.co/1200x800/png?text=Projet+3';
@@ -68,37 +68,19 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <AnimatedSection>
-          <div className="text-center mb-16">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"
-            >
-              {t('projects.title', 'Mes Projets')}
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-6 max-w-3xl mx-auto text-xl text-gray-500"
-            >
-              {t('projects.subtitle', 'Découvrez une sélection de mes projets les plus récents.')}
-            </motion.p>
-          </div>
-        </AnimatedSection>
-        <div className="space-y-24">
-          {projects.map((project, index) => (
-            <AnimatedSection key={project.id} delay={index * 0.2}>
-              <div className="h-[600px]">
-                <ProjectCard project={project} />
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
+    <div className="max-w-7xl mx-auto">
+      <PageHeader
+        title={t('projects.title', 'Mes Projets')}
+        subtitle={t('projects.subtitle', 'Découvrez une sélection de mes projets les plus récents.')}
+      />
+      <div className="space-y-24">
+        {projects.map((project, index) => (
+          <AnimatedSection key={project.id} delay={index * 0.2}>
+            <div className="h-[600px]">
+              <ProjectCard project={project} />
+            </div>
+          </AnimatedSection>
+        ))}
       </div>
     </div>
   );

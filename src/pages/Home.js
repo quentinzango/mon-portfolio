@@ -37,16 +37,12 @@ const Home = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50 overflow-hidden">
-      <div className="pointer-events-none absolute -top-16 -left-24 w-72 h-72 bg-blue-200/40 blur-3xl rounded-full" />
-      <div className="pointer-events-none absolute top-1/3 -right-28 w-80 h-80 bg-cyan-200/40 blur-3xl rounded-full" />
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03] bg-[radial-gradient(#0f172a_1px,transparent_1px)] [background-size:18px_18px]" />
-
+    <div className="max-w-7xl mx-auto">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-8 sm:py-12">
+        <div>
           <AnimatedSection>
-            <div className="text-center bg-white/80 backdrop-blur rounded-3xl border border-blue-100 shadow-lg p-8 sm:p-12">
+            <div className="text-center glass-panel rounded-3xl p-8 sm:p-12">
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -88,8 +84,8 @@ const Home = () => {
       </section>
 
       {/* Compétences */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12">
+        <div>
           <AnimatedSection>
             <div className="text-center">
               <h2 className="text-3xl font-extrabold text-gray-900">
@@ -109,7 +105,7 @@ const Home = () => {
                 <AnimatedSection key={category.id} delay={index * 0.1}>
                   <motion.div
                     whileHover={{ y: -2 }}
-                    className="bg-white/95 backdrop-blur border border-blue-100 rounded-2xl shadow-sm overflow-hidden"
+                    className="glass-card rounded-2xl overflow-hidden"
                   >
                     <button
                       type="button"
@@ -146,8 +142,8 @@ const Home = () => {
       </section>
 
       {/* À propos */}
-      <section className="py-16 bg-white/70 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12">
+        <div>
           <AnimatedSection>
             <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
               <motion.div
@@ -184,9 +180,9 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
                 className="relative"
               >
-                <div className="relative rounded-lg overflow-hidden shadow-xl">
+                <div className="relative rounded-2xl overflow-hidden glass-card p-2">
                   <img
-                    className="w-full h-auto rounded-lg shadow-xl"
+                    className="w-full h-auto rounded-xl"
                     src={heroImage}
                     alt="À propos de moi"
                     loading="lazy"

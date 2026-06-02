@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 import AnimatedSection from '../components/AnimatedSection';
+import PageHeader from '../components/PageHeader';
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -72,22 +73,16 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <AnimatedSection>
-          <div className="text-center mb-16">
-            <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
-              {t('contact.title', 'Contactez-moi')}
-            </h1>
-            <p className="mt-6 max-w-3xl mx-auto text-xl text-gray-500">
-              {t('contact.subtitle', 'Discutons de votre projet')}
-            </p>
-          </div>
-        </AnimatedSection>
+    <div className="max-w-7xl mx-auto">
+      <PageHeader
+        title={t('contact.title', 'Contactez-moi')}
+        subtitle={t('contact.subtitle', 'Discutons de votre projet')}
+      />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <AnimatedSection delay={0.1} noAnimation={isSubmitting}>
-            <div className="space-y-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <AnimatedSection delay={0.1} noAnimation={isSubmitting}>
+          <div className="space-y-8">
+            <div className="glass-panel rounded-2xl p-8">
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">
                   {t('contact.contactInfo', 'Informations de contact')}
@@ -97,26 +92,26 @@ const Contact = () => {
                 </p>
               </div>
 
-              <div className="space-y-6">
-                <div className="flex items-start">
+              <div className="space-y-4">
+                <div className="contact-info-card">
                   <div className="flex-shrink-0 bg-blue-100 p-3 rounded-full text-blue-600">
                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <div className="ml-4">
+                  <div>
                     <h3 className="text-lg font-medium text-gray-900">Email</h3>
                     <p className="text-gray-600">quentinzango470@gmail.com</p>
                   </div>
                 </div>
 
-                <div className="flex items-start">
+                <div className="contact-info-card">
                   <div className="flex-shrink-0 bg-green-100 p-3 rounded-full text-green-600">
                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <div className="ml-4">
+                  <div>
                     <h3 className="text-lg font-medium text-gray-900">WhatsApp</h3>
                     <button
                       onClick={openWhatsApp}
@@ -131,151 +126,157 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </AnimatedSection>
+          </div>
+        </AnimatedSection>
 
-          <AnimatedSection delay={0.2} noAnimation={isSubmitting}>
-            <div className="bg-white p-8 rounded-xl shadow-md">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        <AnimatedSection delay={0.2} noAnimation={isSubmitting}>
+          <div className="glass-card-strong p-8 rounded-2xl">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100/70 text-blue-700 text-xs font-semibold mb-4">
+              Message direct
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 {t('contact.formTitle', 'Envoyez-moi un message')}
-              </h2>
-              
-              {submitStatus && (
-                <div 
-                  key={submitStatus.success ? 'success' : 'error'}
-                  className={`mb-6 p-4 rounded-md ${
-                    submitStatus.success ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
-                  }`}
-                >
-                  {submitStatus.message}
-                </div>
-              )}
-
-              <form ref={form} onSubmit={sendEmail} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                    {t('contact.form.name', 'Nom complet')} *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="from_name"
-                    required
-                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                    {t('contact.form.email', 'Email')} *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="from_email"
-                    required
-                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700">
-                    {t('contact.form.service', 'Type de service')} *
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    required
-                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                  >
-                    <option value="">{t('contact.form.selectService', 'Sélectionnez un service')}</option>
-                    <option value="web">{t('contact.form.webDev', 'Développement Web')}</option>
-                    <option value="mobile">{t('contact.form.mobileDev', 'Développement Mobile')}</option>
-                    <option value="consulting">{t('contact.form.consulting', 'Consulting')}</option>
-                    <option value="other">{t('contact.form.other', 'Autre')}</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                    {t('contact.form.message', 'Votre message')} *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                  ></textarea>
-                </div>
-
-                <div>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-70 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        {t('contact.form.sending', 'Envoi en cours...')}
-                      </>
-                    ) : (
-                      <>
-                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                        </svg>
-                        {t('contact.form.submit', 'Envoyer le message')}
-                      </>
-                    )}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </AnimatedSection>
-        </div>
-
-        {/* Section FAQ */}
-        <AnimatedSection>
-          <div className="max-w-3xl mx-auto mt-16">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              {t('contact.faq.title', 'Questions fréquemment posées')}
             </h2>
-            
-            <div className="space-y-6">
-              {faqs.map((faq, index) => (
-                <div key={index} className="border-b border-gray-200 pb-6">
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    className="flex justify-between items-center w-full text-left text-lg font-medium text-gray-900 focus:outline-none"
-                  >
-                    <span>{faq.question}</span>
-                    <svg
-                      className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
-                        openFaqIndex === index ? 'transform rotate-180' : ''
-                      }`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <div 
-                    className={`mt-4 text-gray-600 transition-all duration-300 ease-in-out ${
-                      openFaqIndex === index ? 'block' : 'hidden'
-                    }`}
-                  >
-                    <p>{faq.answer}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+              
+            {submitStatus && (
+              <div 
+                key={submitStatus.success ? 'success' : 'error'}
+                className={`mb-6 p-4 rounded-lg border ${
+                  submitStatus.success ? 'bg-green-50/90 border-green-200 text-green-800' : 'bg-red-50/90 border-red-200 text-red-800'
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
+            <form ref={form} onSubmit={sendEmail} className="space-y-5">
+              <div className="form-field form-field--icon">
+                <label htmlFor="name">
+                    {t('contact.form.name', 'Nom complet')} *
+                </label>
+                <svg className="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 14a4 4 0 10-8 0m8 0a4 4 0 01-8 0m8 0v1a2 2 0 01-2 2h-4a2 2 0 01-2-2v-1" />
+                </svg>
+                <input
+                  type="text"
+                  id="name"
+                  name="from_name"
+                  required
+                />
+              </div>
+
+              <div className="form-field form-field--icon">
+                <label htmlFor="email">
+                  {t('contact.form.email', 'Email')} *
+                </label>
+                <svg className="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <input
+                  type="email"
+                  id="email"
+                  name="from_email"
+                  required
+                />
+              </div>
+
+              <div className="form-field form-field--no-icon">
+                <label htmlFor="service">
+                  {t('contact.form.service', 'Type de service')} *
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  required
+                >
+                  <option value="">{t('contact.form.selectService', 'Sélectionnez un service')}</option>
+                  <option value="web">{t('contact.form.webDev', 'Développement Web')}</option>
+                  <option value="mobile">{t('contact.form.mobileDev', 'Développement Mobile')}</option>
+                  <option value="consulting">{t('contact.form.consulting', 'Consulting')}</option>
+                  <option value="other">{t('contact.form.other', 'Autre')}</option>
+                </select>
+              </div>
+
+              <div className="form-field">
+                <label htmlFor="message">
+                  {t('contact.form.message', 'Votre message')} *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  required
+                ></textarea>
+              </div>
+
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn-submit-gradient w-full flex justify-center items-center px-6 py-3 rounded-xl text-base font-semibold text-white disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      {t('contact.form.sending', 'Envoi en cours...')}
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      </svg>
+                      {t('contact.form.submit', 'Envoyer le message')}
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
           </div>
         </AnimatedSection>
       </div>
+
+      {/* Section FAQ */}
+      <AnimatedSection>
+        <div className="max-w-3xl mx-auto mt-16 glass-panel rounded-2xl p-8">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            {t('contact.faq.title', 'Questions fréquemment posées')}
+          </h2>
+            
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="rounded-xl border border-slate-200/80 bg-white/70 px-5 py-4">
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="flex justify-between items-center w-full text-left text-lg font-medium text-gray-900 focus:outline-none"
+                >
+                  <span>{faq.question}</span>
+                  <svg
+                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
+                      openFaqIndex === index ? 'transform rotate-180' : ''
+                    }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div 
+                  className={`mt-4 text-gray-600 transition-all duration-300 ease-in-out ${
+                    openFaqIndex === index ? 'block' : 'hidden'
+                  }`}
+                >
+                  <p>{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
     </div>
   );
 };

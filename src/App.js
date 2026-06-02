@@ -7,7 +7,7 @@ import Contact from "./pages/Contact";
 import Service from "./pages/Service";
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
-
+import PageLayout from "./components/PageLayout";
 
 import './App.css';
 
@@ -15,13 +15,15 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/services" element={<Service />} />
-      </Routes>
+      <PageLayout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={<Service />} />
+        </Routes>
+      </PageLayout>
       <Footer />
     </BrowserRouter>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import AnimatedSection from '../components/AnimatedSection';
+import PageHeader from '../components/PageHeader';
 
 const videoPreview = 'https://placehold.co/1280x720/jpg?text=Presentation+Video';
 const myVideo = '';
@@ -56,28 +57,11 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Titre */}
-        <AnimatedSection>
-          <div className="text-center mb-16">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"
-            >
-              {t('about.title', 'À Propos de Moi')}
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mt-6 max-w-3xl mx-auto text-xl text-gray-500"
-            >
-              {t('about.subtitle', 'Découvrez mon parcours, mes compétences et mon expérience')}
-            </motion.p>
-          </div>
-        </AnimatedSection>
+    <div className="max-w-7xl mx-auto">
+      <PageHeader
+        title={t('about.title', 'À Propos de Moi')}
+        subtitle={t('about.subtitle', 'Découvrez mon parcours, mes compétences et mon expérience')}
+      />
 
         {/* Section À Propos + Vidéo */}
         <div className="mb-24">
@@ -99,7 +83,7 @@ const About = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-  <div className="relative rounded-xl overflow-hidden shadow-xl aspect-video bg-gray-100">
+  <div className="relative rounded-xl overflow-hidden glass-card aspect-video">
     <video 
       className="w-full h-full object-cover"
       controls
@@ -124,7 +108,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Parcours Académique */}
             <AnimatedSection>
-              <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="glass-card p-8 rounded-2xl">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
                   <svg className="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -147,7 +131,7 @@ const About = () => {
 
             {/* Expérience Professionnelle */}
             <AnimatedSection delay={0.2}>
-              <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="glass-card p-8 rounded-2xl">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
                   <svg className="w-6 h-6 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M12 18h.01M16 12a1 1 0 11-2 0 1 1 0 012 0zm-4 0a1 1 0 11-2 0 1 1 0 012 0zm-4 0a1 1 0 11-2 0 1 1 0 012 0z" />
@@ -180,7 +164,7 @@ const About = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <AnimatedSection>
-              <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="glass-card p-8 rounded-2xl">
                 <h3 className="text-xl font-semibold text-gray-900 mb-6">
                   {t('about.technicalSkills', 'Compétences Techniques')}
                 </h3>
@@ -204,7 +188,7 @@ const About = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="glass-card p-8 rounded-2xl">
                 <h3 className="text-xl font-semibold text-gray-900 mb-6">
                   {t('about.certifications', 'Certifications')}
                 </h3>
@@ -226,7 +210,6 @@ const About = () => {
             </AnimatedSection>
           </div>
         </div>
-      </div>
     </div>
   );
 };

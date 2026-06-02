@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -7,19 +7,51 @@ const heroImage = 'https://placehold.co/1200x800/png?text=Portfolio';
 
 const Home = () => {
   const { t } = useTranslation();
+  const [openSkillCategory, setOpenSkillCategory] = useState('languages');
+
+  const skillCategories = [
+    {
+      id: 'languages',
+      title: 'Langages de programmation',
+      icon: '💻',
+      items: ['PHP', 'JavaScript', 'TypeScript', 'HTML', 'Dart', 'SQL', 'Python']
+    },
+    {
+      id: 'frameworks',
+      title: 'Frameworks et outils UI',
+      icon: '🧩',
+      items: ['CakePHP', 'Django', 'Laravel', 'Next.js', 'Bootstrap', 'Tailwind CSS', 'Flutter']
+    },
+    {
+      id: 'sgbd',
+      title: 'SGBD et plateformes de données',
+      icon: '🗄️',
+      items: ['MySQL', 'PostgreSQL', 'Firebase', 'Supabase']
+    },
+    {
+      id: 'third-party',
+      title: 'Compétences tiers',
+      icon: '🤝',
+      items: ['Intégration API REST', 'Git / GitHub', 'Déploiement Vercel', 'Méthodes Agile', 'Résolution de problèmes']
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="relative min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50 overflow-hidden">
+      <div className="pointer-events-none absolute -top-16 -left-24 w-72 h-72 bg-blue-200/40 blur-3xl rounded-full" />
+      <div className="pointer-events-none absolute top-1/3 -right-28 w-80 h-80 bg-cyan-200/40 blur-3xl rounded-full" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.03] bg-[radial-gradient(#0f172a_1px,transparent_1px)] [background-size:18px_18px]" />
+
       {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
-            <div className="text-center">
+            <div className="text-center bg-white/80 backdrop-blur rounded-3xl border border-blue-100 shadow-lg p-8 sm:p-12">
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"
+                className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl leading-tight"
               >
                 {t('home.title', 'Développeur Full Stack Passionné')}
               </motion.h1>
@@ -56,7 +88,7 @@ const Home = () => {
       </section>
 
       {/* Compétences */}
-      <section className="py-16 bg-white">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center">
@@ -69,33 +101,52 @@ const Home = () => {
             </div>
           </AnimatedSection>
 
-          <div className="mt-16 grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
-            {[
-            { name: 'React', emoji: '⚛️' },
-            { name: 'Django', emoji: '🐍' },
-            { name: 'JavaScript', emoji: '📜' },
-            { name: 'PostgreSQL', emoji: '🐘' },
-            { name: 'MySQL', emoji: '💾' },
-            { name: 'PHP', emoji: '🐘' }
-          ].map((skill, index) => (
-              <AnimatedSection key={skill.name} delay={index * 0.1}>
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  className="flex flex-col items-center p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="text-4xl mb-3">
-                    {skill.emoji}
-                  </div>
-                  <h3 className="text-lg font-medium text-gray-900">{skill.name}</h3>
-                </motion.div>
-              </AnimatedSection>
-            ))}
+          <div className="mt-12 max-w-4xl mx-auto space-y-4">
+            {skillCategories.map((category, index) => {
+              const isOpen = openSkillCategory === category.id;
+
+              return (
+                <AnimatedSection key={category.id} delay={index * 0.1}>
+                  <motion.div
+                    whileHover={{ y: -2 }}
+                    className="bg-white/95 backdrop-blur border border-blue-100 rounded-2xl shadow-sm overflow-hidden"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenSkillCategory(isOpen ? null : category.id)}
+                      className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-blue-50/60 transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl" aria-hidden="true">{category.icon}</span>
+                        <h3 className="text-lg font-semibold text-gray-900">{category.title}</h3>
+                      </div>
+                      <span className={`text-xl text-blue-700 transition-transform ${isOpen ? 'rotate-180' : ''}`}>⌄</span>
+                    </button>
+
+                    {isOpen && (
+                      <div className="px-6 pb-6">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
+                          {category.items.map((item) => (
+                            <span
+                              key={item}
+                              className="inline-flex justify-center items-center px-3 py-2 rounded-lg text-sm font-medium bg-blue-50 text-blue-800 border border-blue-100"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                </AnimatedSection>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* À propos */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white/70 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">

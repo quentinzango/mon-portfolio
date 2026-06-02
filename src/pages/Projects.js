@@ -5,8 +5,8 @@ import ProjectCard from '../components/ProjectCard';
 import AnimatedSection from '../components/AnimatedSection';
 import PageHeader from '../components/PageHeader';
 import ima from '../assets/ima.png';
-const im7 = 'https://placehold.co/1200x800/png?text=Projet+1';
-const im8 = 'https://placehold.co/1200x800/png?text=Projet+2';
+import im7 from '../assets/im7.png';
+import imb from '../assets/imb.png';
 const im9 = 'https://placehold.co/1200x800/png?text=Projet+3';
 const im10 = ima;
 const Projects = () => {
@@ -44,7 +44,7 @@ const Projects = () => {
         "Synchronisation du kit",
         "Suivi de la consommation électrique",
       ],
-      image: im8, // Remplacez par votre image
+      image: imb,
       githubUrl: "https://github.com/quentinzango/app-mobile-enmkit",
       //demoUrl: "https://project-management-demo.example.com"
     },

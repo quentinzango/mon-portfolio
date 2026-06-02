@@ -231,10 +231,10 @@ const Home = () => {
                 </h2>
                 <div className="mt-6 space-y-6 text-slate-600">
                   <p>
-                    {t('home.aboutText1', 'Développeur passionné avec une expérience dans la création d\'applications web modernes et réactives.')}
+                    {t('home.aboutText1', 'Développeur passionné avec une expérience dans la création d\'applications web et mobiles réactives.')}
                   </p>
                   <p>
-                    {t('home.aboutText2', 'Je me spécialise dans le développement full-stack avec un focus sur les technologies JavaScript.')}
+                    {t('home.aboutText2', 'Je me spécialise dans le développement full-stack, avec une expertise dans la création d\'applications web modernes, performantes et évolutives.')}
                   </p>
                 </div>
                 <div className="mt-8">

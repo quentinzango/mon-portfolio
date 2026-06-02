@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
-const heroImage = 'https://placehold.co/1200x800/png?text=Portfolio';
+import im12 from '../assets/im12.png';
+const heroImage = im12;
 
 const Home = () => {
   const { t } = useTranslation();
@@ -15,25 +16,25 @@ const Home = () => {
       id: 'languages',
       title: 'Langages de programmation',
       icon: '💻',
-      items: ['PHP', 'JavaScript', 'TypeScript', 'HTML', 'Dart', 'SQL', 'Python']
+      items: ['PHP', 'JavaScript', 'TypeScript', 'HTML', 'Dart', 'SQL', 'Python', 'Et autres']
     },
     {
       id: 'frameworks',
       title: 'Frameworks et outils UI',
       icon: '🧩',
-      items: ['CakePHP', 'Django', 'Laravel', 'Next.js', 'Bootstrap', 'Tailwind CSS', 'Flutter']
+      items: ['CakePHP', 'Django', 'Laravel', 'Next.js', 'Bootstrap', 'Tailwind CSS', 'Flutter', 'Et autres']
     },
     {
       id: 'sgbd',
       title: 'SGBD et plateformes de données',
       icon: '🗄️',
-      items: ['MySQL', 'PostgreSQL', 'Firebase', 'Supabase']
+      items: ['MySQL', 'PostgreSQL', 'Firebase', 'Supabase', 'Et autres']
     },
     {
       id: 'third-party',
       title: 'Compétences tiers',
       icon: '🤝',
-      items: ['Intégration API REST', 'Git / GitHub', 'Déploiement Vercel', 'Méthodes Agile', 'Résolution de problèmes']
+      items: ['Intégration d\'API', 'Git / GitHub', 'Déploiement', 'Méthodes Agile', 'Maintenance', 'Et autres']
     }
   ];
 

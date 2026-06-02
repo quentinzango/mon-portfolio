@@ -32,17 +32,17 @@ const About = () => {
   const experience = [
     {
       id: 1,
-      year: "2025 - Présent",
+      year: "2025 - 2026",
       title: "Stagiaire Développeur",
       company: "2MeTech",
       description: "Développement d'applications web et mobiles avec React et Flutter"
     },
     {
       id: 2,
-      year: "2023 - 2024",
-      title: "Stagiaire Développeur",
-      company: "Uni2grow",
-      description: "Développement d'application web avec CakePHP"
+      year: "2025 - 2026",
+      title: "Stagiaire Développeur Back-end",
+      company: "Foormulo (Canada)",
+      description: "Stage de 6 mois en développement back-end sur des services web d'entreprise."
     }
   ];
 

@@ -7,6 +7,7 @@ import PageHeader from '../components/PageHeader';
 const im7 = 'https://placehold.co/1200x800/png?text=Projet+1';
 const im8 = 'https://placehold.co/1200x800/png?text=Projet+2';
 const im9 = 'https://placehold.co/1200x800/png?text=Projet+3';
+const im10 = 'https://placehold.co/1200x800/png?text=U2G+Site+Vitrine';
 const Projects = () => {
   const { t } = useTranslation();
   const projects = [
@@ -64,6 +65,25 @@ const Projects = () => {
       image: im9, // Remplacez par votre image
       githubUrl: "https://github.com/yourusername/weather-app",
       demoUrl: "https://weather-demo.example.com"
+    },
+    {
+      id: 4,
+      title: "Site vitrine U2G",
+      description: "Conception d'un site web vitrine pour l'entreprise U2G permettant aux utilisateurs de découvrir les réalisations de l'entreprise, de contacter l'équipe, de demander des devis et de se localiser facilement. Projet réalisé en 2 semaines.",
+      year: 2026,
+      teamSize: 1,
+      client: "U2G",
+      technologies: ["React.js", "Tailwind CSS", "Supabase"],
+      features: [
+        "Présentation des services et réalisations",
+        "Formulaire de contact",
+        "Demande de devis",
+        "Localisation de l'entreprise",
+        "Interface moderne et responsive"
+      ],
+      image: im10,
+      githubUrl: "https://github.com/universdesgadget/u2g",
+      demoUrl: "https://www.universdesgadgets.com/"
     }
   ];
 

@@ -4,10 +4,11 @@ import { useTranslation } from 'react-i18next';
 import ProjectCard from '../components/ProjectCard';
 import AnimatedSection from '../components/AnimatedSection';
 import PageHeader from '../components/PageHeader';
+import ima from '../assets/ima.png';
 const im7 = 'https://placehold.co/1200x800/png?text=Projet+1';
 const im8 = 'https://placehold.co/1200x800/png?text=Projet+2';
 const im9 = 'https://placehold.co/1200x800/png?text=Projet+3';
-const im10 = 'https://placehold.co/1200x800/png?text=U2G+Site+Vitrine';
+const im10 = ima;
 const Projects = () => {
   const { t } = useTranslation();
   const projects = [

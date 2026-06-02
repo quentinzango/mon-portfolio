@@ -1,8 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { useState, useRef, useEffect } from 'react';
-import frFlag from '../assets/fr-flag.jpg';
-import usFlag from '../assets/us-flag.jpg';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -29,14 +27,14 @@ export default function Navbar() {
   };
 
   const languages = [
-    { code: 'fr', name: 'Français', flag: frFlag },
-    { code: 'en', name: 'English', flag: usFlag }
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'en', name: 'English', flag: '🇺🇸' }
   ];
 
   const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
 
   // Animation pour les liens de la navbar
-  const navItems = ['home', 'about', 'projects', 'services', 'gallery', 'blog', 'contact'];
+  const navItems = ['home', 'about', 'projects', 'services', 'contact'];
 
   return (
     <nav className="bg-gray-800 text-white px-8 py-4 flex justify-between items-center">
@@ -86,11 +84,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             className="flex items-center space-x-2 focus:outline-none group"
           >
-            <img 
-              src={currentLanguage.flag} 
-              alt={currentLanguage.name} 
-              className="w-6 h-4 rounded-sm"
-            />
+            <span className="text-xl" aria-hidden="true">{currentLanguage.flag}</span>
             <span className="text-sm hidden sm:inline">{currentLanguage.code.toUpperCase()}</span>
             <svg
               className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`}
@@ -119,11 +113,7 @@ export default function Navbar() {
                   i18n.language === lang.code ? 'bg-gray-600' : ''
                 }`}
               >
-                <img 
-                  src={lang.flag} 
-                  alt={lang.name} 
-                  className="w-6 h-4 rounded-sm"
-                />
+                <span className="text-lg" aria-hidden="true">{lang.flag}</span>
                 <span>{lang.name}</span>
               </button>
             ))}

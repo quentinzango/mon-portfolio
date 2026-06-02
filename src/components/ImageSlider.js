@@ -1,12 +1,12 @@
 // src/components/ImageSlider.js
 import { useState, useEffect, useCallback } from 'react';
 
-import im1 from '../assets/im1.jpeg';
-import im2 from '../assets/im2.jpeg';
-import im3 from '../assets/im3.jpg';
-import im4 from '../assets/im4.jpg';
-import im5 from '../assets/im5.jpg';
-import im6 from '../assets/im6.png';
+const im1 = 'https://placehold.co/1400x900/jpg?text=Slide+1';
+const im2 = 'https://placehold.co/1400x900/jpg?text=Slide+2';
+const im3 = 'https://placehold.co/1400x900/jpg?text=Slide+3';
+const im4 = 'https://placehold.co/1400x900/jpg?text=Slide+4';
+const im5 = 'https://placehold.co/1400x900/jpg?text=Slide+5';
+const im6 = 'https://placehold.co/1400x900/jpg?text=Slide+6';
 
 const ImageSlider = () => {
   // Tableau d'images

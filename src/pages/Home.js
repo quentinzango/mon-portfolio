@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
-import im10 from '../assets/im10.png';
+const heroImage = 'https://placehold.co/1200x800/png?text=Portfolio';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -136,7 +136,7 @@ const Home = () => {
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img
                     className="w-full h-auto rounded-lg shadow-xl"
-                    src={im10}
+                    src={heroImage}
                     alt="À propos de moi"
                     loading="lazy"
                   />

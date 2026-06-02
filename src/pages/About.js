@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import AnimatedSection from '../components/AnimatedSection';
 
-import videoPreview from '../assets/video-preview.jpg';  // Image de prévisualisation
-import myVideo from '../assets/presentation.mp4';       // Votre vidéo
+const videoPreview = 'https://placehold.co/1280x720/jpg?text=Presentation+Video';
+const myVideo = '';
 
 const About = () => {
   const { t } = useTranslation();
@@ -105,7 +105,7 @@ const About = () => {
       controls
       poster={videoPreview}  // Utilisation de l'image importée
     >
-      <source src={myVideo} type="video/mp4" />
+      {myVideo && <source src={myVideo} type="video/mp4" />}
       {t('about.videoNotSupported', 'Votre navigateur ne supporte pas la lecture de vidéos.')}
     </video>
   </div>

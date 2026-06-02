@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';  // Ajoutez cette ligne
 import { useTranslation } from 'react-i18next';
 import ProjectCard from '../components/ProjectCard';
 import AnimatedSection from '../components/AnimatedSection';
-import im7 from '../assets/im7.png';
-import im9 from '../assets/im9.png';
-import im8 from '../assets/im8.png';
+const im7 = 'https://placehold.co/1200x800/png?text=Projet+1';
+const im8 = 'https://placehold.co/1200x800/png?text=Projet+2';
+const im9 = 'https://placehold.co/1200x800/png?text=Projet+3';
 const Projects = () => {
   const { t } = useTranslation();
   const projects = [

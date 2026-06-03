@@ -16,10 +16,22 @@ i18n
       en: { translation: enTranslation }
     },
     fallbackLng: 'fr',
+    supportedLngs: ['fr', 'en'],
+    load: 'languageOnly',
     debug: false,
+    detection: {
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
+    },
     interpolation: {
       escapeValue: false,
-    }
+    },
   });
+
+document.documentElement.lang = (i18n.language || 'fr').split('-')[0];
+
+i18n.on('languageChanged', (lng) => {
+  document.documentElement.lang = lng.split('-')[0];
+});
 
 export default i18n;

@@ -20,15 +20,18 @@ export default function Navbar() {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
+    document.documentElement.lang = lng;
     setLangOpen(false);
   };
+
+  const currentLangCode = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0];
 
   const languages = [
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
     { code: 'en', name: 'English', flag: '🇺🇸' }
   ];
 
-  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
+  const currentLanguage = languages.find((lang) => lang.code === currentLangCode) || languages[0];
   const navItems = ['home', 'about', 'projects', 'services', 'contact'];
 
   return (
@@ -84,7 +87,7 @@ export default function Navbar() {
                   type="button"
                   onClick={() => changeLanguage(lang.code)}
                   className={`w-full text-left px-4 py-2.5 text-sm flex items-center gap-2 hover:bg-white/5 ${
-                    i18n.language === lang.code ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300'
+                    currentLangCode === lang.code ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300'
                   }`}
                 >
                   <span>{lang.flag}</span>

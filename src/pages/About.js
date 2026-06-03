@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import AnimatedSection from '../components/AnimatedSection';
@@ -8,43 +8,63 @@ const videoPreview = 'https://placehold.co/1280x720/jpg?text=Presentation+Video'
 const myVideo = '';
 
 const About = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  // Données pour le parcours académique
-  const education = [
-    {
-      id: 1,
-      year: "2024 - 2025",
-      title: "Licence en génie Informatique",
-      institution: "Université de Technologie FV",
-      description: "Spécialisation en Développement Réseau et internet"
-    },
-    {
-      id: 2,
-      year: "2023 - 2024",
-      title: "DEUG",
-      institution: "Université de Dschang",
-      description: "Parcours Génie Logiciel"
-    }
-  ];
+  const education = useMemo(
+    () => [
+      {
+        id: 1,
+        year: t('about.educationList.licence.year'),
+        title: t('about.educationList.licence.title'),
+        institution: t('about.educationList.licence.institution'),
+        description: t('about.educationList.licence.description'),
+      },
+      {
+        id: 2,
+        year: t('about.educationList.deug.year'),
+        title: t('about.educationList.deug.title'),
+        institution: t('about.educationList.deug.institution'),
+        description: t('about.educationList.deug.description'),
+      },
+    ],
+    [t, i18n.language]
+  );
 
-  // Données pour l'expérience professionnelle
-  const experience = [
-    {
-      id: 1,
-      year: "2025 - 2026",
-      title: "Stagiaire Développeur",
-      company: "2MeTech",
-      description: "Développement d'applications web et mobiles avec React et Flutter"
-    },
-    {
-      id: 2,
-      year: "2025 - 2026",
-      title: "Stagiaire Développeur Back-end",
-      company: "Foormulo (Canada)",
-      description: "Stage de 6 mois en développement back-end sur des services web d'entreprise."
-    }
-  ];
+  const experience = useMemo(
+    () => [
+      {
+        id: 1,
+        year: t('about.experienceList.meTech.year'),
+        title: t('about.experienceList.meTech.title'),
+        company: t('about.experienceList.meTech.company'),
+        description: t('about.experienceList.meTech.description'),
+      },
+      {
+        id: 2,
+        year: t('about.experienceList.foormulo.year'),
+        title: t('about.experienceList.foormulo.title'),
+        company: t('about.experienceList.foormulo.company'),
+        description: t('about.experienceList.foormulo.description'),
+      },
+      {
+        id: 3,
+        year: t('about.experienceList.uni2grow.year'),
+        title: t('about.experienceList.uni2grow.title'),
+        company: t('about.experienceList.uni2grow.company'),
+        description: t('about.experienceList.uni2grow.description'),
+      },
+    ],
+    [t, i18n.language]
+  );
+
+  const certifications = useMemo(
+    () => [
+      { id: 'dev', style: 'blue' },
+      { id: 'react', style: 'green' },
+      { id: 'flutter', style: 'purple' },
+    ],
+    []
+  );
 
   // Compétences techniques
   const skills = [
@@ -59,9 +79,9 @@ const About = () => {
   return (
     <div className="max-w-7xl mx-auto">
       <PageHeader
-        badge="Parcours"
-        title={t('about.title', 'À Propos de Moi')}
-        subtitle={t('about.subtitle', 'Découvrez mon parcours, mes compétences et mon expérience')}
+        badge={t('about.badge')}
+        title={t('about.title')}
+        subtitle={t('about.subtitle')}
       />
 
         {/* Section À Propos + Vidéo */}
@@ -194,18 +214,23 @@ const About = () => {
                   {t('about.certifications', 'Certifications')}
                 </h3>
                 <div className="space-y-4">
-                  <div className="p-4 bg-blue-50 rounded-lg">
-                    <h4 className="font-medium text-blue-800">Développeur</h4>
-                    <p className="text-sm text-blue-600">OpenClassrooms - 2024</p>
-                  </div>
-                  <div className="p-4 bg-green-50 rounded-lg">
-                    <h4 className="font-medium text-green-800">React</h4>
-                    <p className="text-sm text-green-600">OpenClassrooms - 2024</p>
-                  </div>
-                  <div className="p-4 bg-purple-50 rounded-lg">
-                    <h4 className="font-medium text-purple-800">Futter</h4>
-                    <p className="text-sm text-purple-600">Coursera - 2023</p>
-                  </div>
+                  {certifications.map((cert) => {
+                    const styles = {
+                      blue: { box: 'bg-blue-50', title: 'text-blue-800', org: 'text-blue-600' },
+                      green: { box: 'bg-green-50', title: 'text-green-800', org: 'text-green-600' },
+                      purple: { box: 'bg-purple-50', title: 'text-purple-800', org: 'text-purple-600' },
+                    }[cert.style];
+                    return (
+                      <div key={cert.id} className={`p-4 rounded-lg ${styles.box}`}>
+                        <h4 className={`font-medium ${styles.title}`}>
+                          {t(`about.certs.${cert.id}.title`)}
+                        </h4>
+                        <p className={`text-sm ${styles.org}`}>
+                          {t(`about.certs.${cert.id}.org`)}
+                        </p>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </AnimatedSection>

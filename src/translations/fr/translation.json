@@ -1,100 +1,196 @@
 {
-  
   "common": {
-    "welcome": "Bienvenue sur mon portfolio",
     "home": "Accueil",
-    "gallery": "Galerie",
     "about": "À propos",
     "projects": "Projets",
     "services": "Services",
-    "blog": "Blog",
-    "contact": "Contact",
-    "readMore": "Lire la suite",
-    "viewProject": "Voir le projet",
-    "allProjects": "Tous les projets",
-    "backToHome": "Retour à l'accueil",
-    "loading": "Chargement...",
-    "error": "Une erreur est survenue",
-    "success": "Succès",
-    "close": "Fermer",
-    "send": "Envoyer",
-    "name": "Nom",
-    "email": "Email",
-    "message": "Message",
-    "subject": "Sujet",
-    "submit": "Envoyer",
-    "sending": "Envoi en cours...",
-    "sendMessage": "Envoyer un message",
-    "getInTouch": "Restez en contact",
-    "followMe": "Suivez-moi",
-    "allRightsReserved": "Tous droits réservés"
+    "contact": "Contact"
   },
   "home": {
+    "heroBadge": "Innovation · Design · Code",
     "title": "Développeur Web et Mobile & Designer UI/UX",
-    "subtitle": "Je crée des expériences numériques exceptionnelles",
-    "cta": "Voir mon travail",
+    "subtitle": "Je crée des expériences numériques exceptionnelles avec des technologies modernes.",
+    "seeProjects": "Voir mes projets",
+    "contactMe": "Me contacter",
+    "skillsEyebrow": "Stack technique",
+    "skillsTitle": "Mes Compétences",
+    "skillsSubtitle": "Technologies que je maîtrise",
+    "skillsPanelHint": "Clique sur une catégorie pour afficher les technologies.",
+    "skillsHints": {
+      "languages": "Langages orientés front/back, scripts et données.",
+      "frameworks": "Frameworks et outils pour construire des interfaces modernes.",
+      "sgbd": "SGBD et services pour stocker, synchroniser et exploiter les données.",
+      "third-party": "Compétences complémentaires pour livrer un projet de A à Z."
+    },
+    "skills": {
+      "categories": {
+        "languages": {
+          "title": "Langages de programmation",
+          "items": ["PHP", "JavaScript", "TypeScript", "HTML", "Dart", "SQL", "Python", "Et autres"]
+        },
+        "frameworks": {
+          "title": "Frameworks et outils UI",
+          "items": ["CakePHP", "Django", "Laravel", "Next.js", "Bootstrap", "Tailwind CSS", "Flutter", "Et autres"]
+        },
+        "sgbd": {
+          "title": "SGBD et plateformes de données",
+          "items": ["MySQL", "PostgreSQL", "Firebase", "Supabase", "Et autres"]
+        },
+        "third-party": {
+          "title": "Compétences tiers",
+          "items": ["Intégration d'API", "Git / GitHub", "Déploiement", "Méthodes Agile", "Maintenance", "Et autres"]
+        }
+      }
+    },
+    "aboutEyebrow": "Profil",
     "aboutTitle": "À propos de moi",
-    "aboutText": "Développeur passionné avec une expertise en création d'applications web et mobiles modernes et réactives.",
-    "servicesTitle": "Mes services",
-    "projectsTitle": "Projets récents",
-    "testimonialsTitle": "Ce que disent mes clients",
-    "contactTitle": "Travaillons ensemble",
-    "contactText": "Vous avez un projet en tête ? Discutons-en !"
+    "aboutText1": "Développeur passionné avec une expérience dans la création d'applications web et mobiles réactives.",
+    "aboutText2": "Je me spécialise dans le développement full-stack, avec une expertise dans la création d'applications web modernes, performantes et évolutives.",
+    "learnMore": "En savoir plus →"
   },
   "about": {
-    "title": "À propos de moi",
-    "intro": "Développeur Web passionné par la création d'expériences numériques exceptionnelles.",
-    "skillsTitle": "Compétences",
-    "experienceTitle": "Expérience",
-    "educationTitle": "Formation",
-    "downloadCv": "Télécharger mon CV"
+    "badge": "Parcours",
+    "title": "À Propos de Moi",
+    "subtitle": "Découvrez mon parcours, mes compétences et mon expérience",
+    "whoAmI": "Qui suis-je ?",
+    "description1": "Développeur passionné avec une solide expérience dans la création d'applications web et mobiles modernes. J'aime résoudre des problèmes complexes avec des solutions élégantes.",
+    "description2": "Mon objectif est de créer des expériences utilisateur exceptionnelles tout en écrivant un code propre, maintenable et bien documenté.",
+    "videoNotSupported": "Votre navigateur ne supporte pas la lecture de vidéos.",
+    "myJourney": "Mon Parcours",
+    "education": "Formation",
+    "experience": "Expérience Professionnelle",
+    "skills": "Mes Compétences",
+    "technicalSkills": "Compétences Techniques",
+    "certifications": "Certifications",
+    "educationList": {
+      "licence": {
+        "year": "2024 - 2025",
+        "title": "Licence en génie Informatique",
+        "institution": "Université de Technologie FV",
+        "description": "Spécialisation en Développement Réseau et internet"
+      },
+      "deug": {
+        "year": "2023 - 2024",
+        "title": "DEUG",
+        "institution": "Université de Dschang",
+        "description": "Parcours Génie Logiciel"
+      }
+    },
+    "experienceList": {
+      "meTech": {
+        "year": "2025 - 2026",
+        "title": "Stagiaire Développeur",
+        "company": "2MeTech",
+        "description": "Développement d'applications web et mobiles avec React et Flutter."
+      },
+      "foormulo": {
+        "year": "2025 - 2026",
+        "title": "Stagiaire Développeur Back-end",
+        "company": "Foormulo (Canada)",
+        "description": "Stage de 6 mois en développement back-end sur des services web d'entreprise."
+      },
+      "uni2grow": {
+        "year": "2023 - 2024",
+        "title": "Stagiaire Développeur Web",
+        "company": "Uni2grow",
+        "description": "Stage de 3 mois en développement web au cours duquel j'ai participé à la réalisation de divers projets d'entreprise."
+      }
+    },
+    "certs": {
+      "dev": { "title": "Développeur", "org": "OpenClassrooms - 2024" },
+      "react": { "title": "React", "org": "OpenClassrooms - 2024" },
+      "flutter": { "title": "Flutter", "org": "Coursera - 2023" }
+    }
   },
   "projects": {
+    "badge": "Réalisations",
     "title": "Mes Projets",
-    "subtitle": "Une sélection de mes réalisations récentes",
-    "filterAll": "Tous",
-    "filterWeb": "Web",
-    "filterMobile": "Mobile",
-    "filterDesign": "Design",
-    "viewDetails": "Voir les détails",
+    "subtitle": "Découvrez une sélection de mes projets les plus récents.",
     "technologies": "Technologies utilisées",
-    "client": "Client",
-    "year": "Année",
-    "category": "Catégorie",
-    "visitWebsite": "Visiter le site"
+    "keyFeatures": "Fonctionnalités clés",
+    "viewDemo": "Voir la démo",
+    "viewCode": "Voir le code",
+    "liveDemo": "Voir en ligne",
+    "developer": "développeur",
+    "developers": "développeurs",
+    "list": {
+      "dashboard": {
+        "title": "Dashboard d'administration",
+        "description": "Le dashboard d'administration ENMkit est une interface web centralisée permettant aux administrateurs de superviser, configurer et contrôler à distance les kits EMkit installés dans les ménages.",
+        "client": "2MeTech",
+        "features": ["Gestion des kits ENMkit", "Suivi de la consommation électrique", "Alertes et notifications", "Rapports et statistiques"]
+      },
+      "mobile": {
+        "title": "Application Mobile de Contrôle de Relais ENMkit",
+        "description": "Application intuitive permettant aux abonnés et techniciens de configurer et contrôler à distance l'alimentation électrique d'un site via un relais GSM, avec des commandes sécurisées SMS.",
+        "client": "2MeTech",
+        "features": ["Contrôle à distance du relais", "Authentification et sécurité", "Synchronisation du kit", "Suivi de la consommation électrique"]
+      },
+      "weather": {
+        "title": "Application Météo",
+        "description": "Application météo en temps réel avec prévisions sur 7 jours et géolocalisation automatique.",
+        "client": "Projet personnel",
+        "features": ["Météo actuelle et prévisions sur 7 jours", "Géolocalisation automatique", "Recherche par ville", "Graphiques des températures", "Thème clair/sombre"]
+      },
+      "u2g": {
+        "title": "Site vitrine U2G",
+        "description": "Site web vitrine pour l'entreprise U2G : réalisations, contact, demande de devis et localisation. Projet réalisé en 2 semaines.",
+        "client": "U2G",
+        "features": ["Présentation des services et réalisations", "Formulaire de contact", "Demande de devis", "Localisation de l'entreprise", "Interface moderne et responsive"]
+      }
+    }
   },
   "services": {
+    "badge": "Expertise",
     "title": "Mes Services",
-    "subtitle": "Ce que je peux faire pour vous",
-    "webDevelopment": {
+    "subtitle": "Des solutions sur mesure pour répondre à vos besoins numériques",
+    "webDev": {
       "title": "Développement Web",
-      "description": "Création de sites web modernes et réactifs avec les dernières technologies."
+      "description": "Création de sites web et applications web sur mesure avec les dernières technologies."
     },
-    "mobileDevelopment": {
-      "title": "Développement Mobile",
-      "description": "Applications mobiles natives et cross-plateformes pour iOS et Android."
+    "mobileDev": {
+      "title": "Applications Mobiles",
+      "description": "Développement d'applications mobiles cross-plateformes performantes."
     },
-    "uiUxDesign": {
-      "title": "Design UI/UX",
-      "description": "Conception d'interfaces utilisateur intuitives et d'expériences utilisateur exceptionnelles."
+    "uiux": {
+      "title": "UI/UX Design",
+      "description": "Conception d'interfaces utilisateur intuitives et attrayantes."
     },
     "seo": {
       "title": "Référencement SEO",
-      "description": "Optimisation pour les moteurs de recherche pour améliorer votre visibilité en ligne."
+      "description": "Optimisation pour les moteurs de recherche et amélioration de la visibilité."
     },
     "maintenance": {
-      "title": "Maintenance & Support",
-      "description": "Services de maintenance continue et support technique pour votre site ou application."
+      "title": "Maintenance",
+      "description": "Support continu et mises à jour pour votre application."
+    },
+    "consulting": {
+      "title": "Consulting",
+      "description": "Conseils d'experts pour votre projet numérique."
+    },
+    "api": {
+      "title": "Intégration d'API",
+      "description": "Connexion et intégration de services tiers et API externes pour étendre les fonctionnalités de votre application."
+    },
+    "cta": {
+      "title": "Prêt à démarrer votre projet ?",
+      "description": "Contactez-moi pour discuter de votre projet et voir comment je peux vous aider à le concrétiser.",
+      "button": "Me contacter"
     }
   },
   "contact": {
+    "badge": "Collaboration",
     "title": "Contactez-moi",
     "subtitle": "Discutons de votre projet",
     "contactInfo": "Informations de contact",
     "contactDescription": "N'hésitez pas à me contacter pour toute question.",
+    "formBadge": "Message direct",
     "formTitle": "Envoyez-moi un message",
     "successMessage": "Message envoyé avec succès ! Je vous répondrai dès que possible.",
     "errorMessage": "Erreur lors de l'envoi du message. Veuillez réessayer.",
+    "whatsappCta": "Envoyer un message",
+    "whatsappMessage": "Bonjour, je vous contacte depuis votre portfolio.",
+    "location": "Douala, Cameroun",
     "form": {
       "name": "Nom complet",
       "email": "Email",
@@ -103,6 +199,7 @@
       "webDev": "Développement Web",
       "mobileDev": "Développement Mobile",
       "consulting": "Consulting",
+      "other": "Autre",
       "message": "Votre message",
       "sending": "Envoi en cours...",
       "submit": "Envoyer le message"
@@ -129,25 +226,14 @@
       }
     }
   },
-  "blog": {
-    "title": "Blog",
-    "subtitle": "Articles et tutoriels sur le développement web et mobile",
-    "readMore": "Lire la suite",
-    "noPosts": "Aucun article disponible pour le moment",
-    "categories": "Catégories",
-    "recentPosts": "Articles récents",
-    "tags": "Étiquettes"
-  },
   "footer": {
-    "about": "À propos",
-    "quickLinks": "Liens rapides",
-    "services": "Services",
-    "newsletter": "Newsletter",
-    "subscribe": "S'abonner",
-    "yourEmail": "Votre email",
-    "subscribeText": "Abonnez-vous pour recevoir les dernières mises à jour et actualités.",
-    "allRightsReserved": "Tous droits réservés",
-    "privacyPolicy": "Politique de confidentialité",
-    "termsOfService": "Conditions d'utilisation"
+    "bio": "Développeur Full Stack passionné par la création de solutions web innovantes.",
+    "contact": "Contact",
+    "follow": "Suivez-moi",
+    "rights": "Tous droits réservés.",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "backToTop": "Retour en haut",
+    "andOther": "et autres"
   }
 }

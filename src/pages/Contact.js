@@ -18,7 +18,7 @@ const Contact = () => {
     },
     {
       question: t('contact.faq.questions.delai.question', 'Quel est votre délai de livraison moyen ?'),
-      answer: t('contact.faq.questions.delai.answer', 'Le délai dépend de la complexité du projet. Un site vitrine simple peut prendre 2-3 semaines, tandis qu\'une application personnalisée peut nécessiter plusieurs mois. Je vous fournirai un calendrier détaillé après analyse de vos besoins.')
+      answer: t('contact.faq.questions.delai.answer', 'Le délai dépend de la complexité du projet. Un site vitrine simple peut prendre 1-2 semaines, tandis qu\'une application personnalisée peut nécessiter plusieurs mois. Je vous fournirai un calendrier détaillé après analyse de vos besoins.')
     },
     {
       question: t('contact.faq.questions.maintenance.question', 'Proposez-vous un service de maintenance ?'),
@@ -26,7 +26,7 @@ const Contact = () => {
     },
     {
       question: t('contact.faq.questions.paiement.question', 'Quelles sont vos méthodes de paiement ?'),
-      answer: t('contact.faq.questions.paiement.answer', 'J\'accepte les virements bancaires, PayPal et les paiements par carte de crédit. Un acompte est généralement demandé avant le début du projet, le solde étant dû à la livraison.')
+      answer: t('contact.faq.questions.paiement.answer', 'J\'accepte les virements bancaires et les paiements par carte de crédit. Un acompte est généralement demandé avant le début du projet, le solde étant dû à la livraison.')
     }
   ];
 
@@ -36,9 +36,9 @@ const Contact = () => {
 
   const openWhatsApp = useCallback(() => {
     const phoneNumber = '237670184922';
-    const message = encodeURIComponent('Bonjour, je vous contacte depuis votre portfolio.');
+    const message = encodeURIComponent(t('contact.whatsappMessage'));
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-  }, []);
+  }, [t]);
 
   const sendEmail = async (e) => {
     e.preventDefault();
@@ -75,9 +75,9 @@ const Contact = () => {
   return (
     <div className="max-w-7xl mx-auto">
       <PageHeader
-        badge="Collaboration"
-        title={t('contact.title', 'Contactez-moi')}
-        subtitle={t('contact.subtitle', 'Discutons de votre projet')}
+        badge={t('contact.badge')}
+        title={t('contact.title')}
+        subtitle={t('contact.subtitle')}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

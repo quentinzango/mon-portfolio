@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -8,35 +8,38 @@ import im13 from '../assets/im13.png';
 const heroImage = im13;
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [openSkillCategory, setOpenSkillCategory] = useState('languages');
 
-  const skillCategories = [
-    {
-      id: 'languages',
-      title: 'Langages de programmation',
-      icon: '💻',
-      items: ['PHP', 'JavaScript', 'TypeScript', 'HTML', 'Dart', 'SQL', 'Python', 'Et autres']
-    },
-    {
-      id: 'frameworks',
-      title: 'Frameworks et outils UI',
-      icon: '🧩',
-      items: ['CakePHP', 'Django', 'Laravel', 'Next.js', 'Bootstrap', 'Tailwind CSS', 'Flutter', 'Et autres']
-    },
-    {
-      id: 'sgbd',
-      title: 'SGBD et plateformes de données',
-      icon: '🗄️',
-      items: ['MySQL', 'PostgreSQL', 'Firebase', 'Supabase', 'Et autres']
-    },
-    {
-      id: 'third-party',
-      title: 'Compétences tiers',
-      icon: '🤝',
-      items: ['Intégration d\'API', 'Git / GitHub', 'Déploiement', 'Méthodes Agile', 'Maintenance', 'Et autres']
-    }
-  ];
+  const skillCategories = useMemo(
+    () => [
+      {
+        id: 'languages',
+        title: t('home.skills.categories.languages.title'),
+        icon: '💻',
+        items: t('home.skills.categories.languages.items', { returnObjects: true }),
+      },
+      {
+        id: 'frameworks',
+        title: t('home.skills.categories.frameworks.title'),
+        icon: '🧩',
+        items: t('home.skills.categories.frameworks.items', { returnObjects: true }),
+      },
+      {
+        id: 'sgbd',
+        title: t('home.skills.categories.sgbd.title'),
+        icon: '🗄️',
+        items: t('home.skills.categories.sgbd.items', { returnObjects: true }),
+      },
+      {
+        id: 'third-party',
+        title: t('home.skills.categories.third-party.title'),
+        icon: '🤝',
+        items: t('home.skills.categories.third-party.items', { returnObjects: true }),
+      },
+    ],
+    [t, i18n.language]
+  );
 
   const activeCategory = skillCategories.find((c) => c.id === openSkillCategory) || skillCategories[0];
 
@@ -57,7 +60,7 @@ const Home = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="section-eyebrow"
                 >
-                  Innovation · Design · Code
+                  {t('home.heroBadge')}
                 </motion.span>
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
@@ -116,7 +119,7 @@ const Home = () => {
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
             <div className="text-center">
-              <span className="section-eyebrow">Stack technique</span>
+              <span className="section-eyebrow">{t('home.skillsEyebrow')}</span>
               <h2 className="mt-4 text-3xl sm:text-4xl font-display font-bold gradient-text">
                 {t('home.skillsTitle', 'Mes Compétences')}
               </h2>
@@ -184,7 +187,7 @@ const Home = () => {
                   <div>
                     <h3 className="text-2xl font-display font-bold text-theme">{activeCategory.title}</h3>
                     <p className="text-theme-muted mt-1">
-                      Clique sur une catégorie pour afficher les technologies.
+                      {t('home.skillsPanelHint')}
                     </p>
                   </div>
                 </div>
@@ -220,13 +223,7 @@ const Home = () => {
                         ✨
                       </span>
                       <p className="text-sm sm:text-base">
-                        {activeCategory.id === "languages"
-                          ? "Langages orientés front/back, scripts et données."
-                          : activeCategory.id === "frameworks"
-                          ? "Frameworks & outils pour construire des interfaces modernes."
-                          : activeCategory.id === "sgbd"
-                          ? "SGBD et services pour stocker, synchroniser et exploiter les données."
-                          : "Compétences complémentaires pour livrer un projet de A à Z."}
+                        {t(`home.skillsHints.${activeCategory.id}`)}
                       </p>
                     </motion.div>
                   </motion.div>
@@ -249,7 +246,7 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-12 lg:mb-0"
               >
-                <span className="section-eyebrow">Profil</span>
+                <span className="section-eyebrow">{t('home.aboutEyebrow')}</span>
                 <h2 className="mt-4 text-3xl font-display font-bold gradient-text">
                   {t('home.aboutTitle', 'À propos de moi')}
                 </h2>

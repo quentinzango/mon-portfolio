@@ -1,33 +1,239 @@
 {
-  "navbar": {
-    "home": "HOME",
-    "about": "ABOUT",
-    "projects": "PROJECTS",
-    "services": "SERVICES",
-    "gallery": "GALLERY",
-    "blog": "BLOG",
-    "contact": "CONTACT"
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "services": "Services",
+    "contact": "Contact"
   },
-
+  "home": {
+    "heroBadge": "Innovation · Design · Code",
+    "title": "Full Stack Developer & UI/UX Designer",
+    "subtitle": "I create exceptional digital experiences with modern technologies.",
+    "seeProjects": "View my projects",
+    "contactMe": "Contact me",
+    "skillsEyebrow": "Tech stack",
+    "skillsTitle": "My Skills",
+    "skillsSubtitle": "Technologies I work with",
+    "skillsPanelHint": "Click a category to display technologies.",
+    "skillsHints": {
+      "languages": "Front/back languages, scripts and data.",
+      "frameworks": "Frameworks and tools to build modern interfaces.",
+      "sgbd": "Databases and services to store, sync and use data.",
+      "third-party": "Complementary skills to deliver end-to-end projects."
+    },
+    "skills": {
+      "categories": {
+        "languages": {
+          "title": "Programming languages",
+          "items": ["PHP", "JavaScript", "TypeScript", "HTML", "Dart", "SQL", "Python", "And more"]
+        },
+        "frameworks": {
+          "title": "Frameworks & UI tools",
+          "items": ["CakePHP", "Django", "Laravel", "Next.js", "Bootstrap", "Tailwind CSS", "Flutter", "And more"]
+        },
+        "sgbd": {
+          "title": "Databases & data platforms",
+          "items": ["MySQL", "PostgreSQL", "Firebase", "Supabase", "And more"]
+        },
+        "third-party": {
+          "title": "Additional skills",
+          "items": ["API integration", "Git / GitHub", "Deployment", "Agile methods", "Maintenance", "And more"]
+        }
+      }
+    },
+    "aboutEyebrow": "Profile",
+    "aboutTitle": "About me",
+    "aboutText1": "Passionate developer experienced in building modern, responsive web and mobile applications.",
+    "aboutText2": "I specialize in full-stack development, with expertise in modern, performant and scalable web applications.",
+    "learnMore": "Learn more →"
+  },
+  "about": {
+    "badge": "Journey",
+    "title": "About Me",
+    "subtitle": "Discover my background, skills and experience",
+    "whoAmI": "Who am I?",
+    "description1": "Passionate developer with solid experience building modern web and mobile applications. I enjoy solving complex problems with elegant solutions.",
+    "description2": "My goal is to create exceptional user experiences while writing clean, maintainable and well-documented code.",
+    "videoNotSupported": "Your browser does not support video playback.",
+    "myJourney": "My Journey",
+    "education": "Education",
+    "experience": "Professional Experience",
+    "skills": "My Skills",
+    "technicalSkills": "Technical Skills",
+    "certifications": "Certifications",
+    "educationList": {
+      "licence": {
+        "year": "2024 - 2025",
+        "title": "Bachelor's in Computer Engineering",
+        "institution": "FV University of Technology",
+        "description": "Specialization in Network & Internet Development"
+      },
+      "deug": {
+        "year": "2023 - 2024",
+        "title": "DEUG",
+        "institution": "University of Dschang",
+        "description": "Software Engineering track"
+      }
+    },
+    "experienceList": {
+      "meTech": {
+        "year": "2025 - 2026",
+        "title": "Developer Intern",
+        "company": "2MeTech",
+        "description": "Development of web and mobile applications with React and Flutter."
+      },
+      "foormulo": {
+        "year": "2025 - 2026",
+        "title": "Back-end Developer Intern",
+        "company": "Foormulo (Canada)",
+        "description": "6-month internship in back-end development for enterprise web services."
+      },
+      "uni2grow": {
+        "year": "2023 - 2024",
+        "title": "Web Developer Intern",
+        "company": "Uni2grow",
+        "description": "3-month web development internship contributing to various company projects."
+      }
+    },
+    "certs": {
+      "dev": { "title": "Developer", "org": "OpenClassrooms - 2024" },
+      "react": { "title": "React", "org": "OpenClassrooms - 2024" },
+      "flutter": { "title": "Flutter", "org": "Coursera - 2023" }
+    }
+  },
+  "projects": {
+    "badge": "Showcase",
+    "title": "My Projects",
+    "subtitle": "A selection of my most recent projects.",
+    "technologies": "Technologies used",
+    "keyFeatures": "Key features",
+    "viewDemo": "View demo",
+    "viewCode": "View code",
+    "liveDemo": "Live demo",
+    "developer": "developer",
+    "developers": "developers",
+    "list": {
+      "dashboard": {
+        "title": "Admin Dashboard",
+        "description": "ENMkit admin dashboard: a centralized web interface for administrators to monitor, configure and remotely control EMkit kits installed in households.",
+        "client": "2MeTech",
+        "features": ["ENMkit kit management", "Electricity consumption tracking", "Alerts and notifications", "Reports and statistics"]
+      },
+      "mobile": {
+        "title": "ENMkit Relay Control Mobile App",
+        "description": "Intuitive app for subscribers and technicians to configure and remotely control site power via a GSM relay with secure SMS commands.",
+        "client": "2MeTech",
+        "features": ["Remote relay control", "Authentication and security", "Kit synchronization", "Electricity consumption tracking"]
+      },
+      "weather": {
+        "title": "Weather App",
+        "description": "Real-time weather app with 7-day forecasts and automatic geolocation.",
+        "client": "Personal project",
+        "features": ["Current weather and 7-day forecast", "Automatic geolocation", "City search", "Temperature charts", "Light/dark theme"]
+      },
+      "u2g": {
+        "title": "U2G Showcase Website",
+        "description": "Showcase website for U2G: portfolio, contact, quote requests and location. Built in 2 weeks.",
+        "client": "U2G",
+        "features": ["Services and portfolio showcase", "Contact form", "Quote requests", "Business location", "Modern responsive UI"]
+      }
+    }
+  },
+  "services": {
+    "badge": "Expertise",
+    "title": "My Services",
+    "subtitle": "Tailored solutions for your digital needs",
+    "webDev": {
+      "title": "Web Development",
+      "description": "Custom websites and web applications with the latest technologies."
+    },
+    "mobileDev": {
+      "title": "Mobile Apps",
+      "description": "High-performance cross-platform mobile applications."
+    },
+    "uiux": {
+      "title": "UI/UX Design",
+      "description": "Intuitive and attractive user interface design."
+    },
+    "seo": {
+      "title": "SEO",
+      "description": "Search engine optimization to improve your online visibility."
+    },
+    "maintenance": {
+      "title": "Maintenance",
+      "description": "Ongoing support and updates for your application."
+    },
+    "consulting": {
+      "title": "Consulting",
+      "description": "Expert advice for your digital project."
+    },
+    "api": {
+      "title": "API Integration",
+      "description": "Connecting third-party services and external APIs to extend your app's capabilities."
+    },
+    "cta": {
+      "title": "Ready to start your project?",
+      "description": "Contact me to discuss your project and how I can help bring it to life.",
+      "button": "Contact me"
+    }
+  },
+  "contact": {
+    "badge": "Collaboration",
+    "title": "Contact me",
+    "subtitle": "Let's discuss your project",
+    "contactInfo": "Contact information",
+    "contactDescription": "Feel free to reach out with any questions.",
+    "formBadge": "Direct message",
+    "formTitle": "Send me a message",
+    "successMessage": "Message sent successfully! I will reply as soon as possible.",
+    "errorMessage": "Error sending message. Please try again.",
+    "whatsappCta": "Send a message",
+    "whatsappMessage": "Hello, I'm contacting you from your portfolio.",
+    "location": "Douala, Cameroon",
+    "form": {
+      "name": "Full name",
+      "email": "Email",
+      "service": "Service type",
+      "selectService": "Select a service",
+      "webDev": "Web Development",
+      "mobileDev": "Mobile Development",
+      "consulting": "Consulting",
+      "other": "Other",
+      "message": "Your message",
+      "sending": "Sending...",
+      "submit": "Send message"
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "questions": {
+        "typesDeProjets": {
+          "question": "What types of projects do you handle?",
+          "answer": "I specialize in web and mobile development, including showcase sites, web apps, cross-platform mobile apps, and custom business solutions."
+        },
+        "delai": {
+          "question": "What is your average delivery time?",
+          "answer": "Timing depends on complexity. A simple showcase site may take 2-3 weeks, while a custom application can take several months. I provide a detailed timeline after reviewing your needs."
+        },
+        "maintenance": {
+          "question": "Do you offer maintenance?",
+          "answer": "Yes, I offer maintenance plans including updates, bug fixes and technical support. We can discuss a solution that fits your needs."
+        },
+        "paiement": {
+          "question": "What payment methods do you accept?",
+          "answer": "I accept bank transfers, PayPal and credit card payments. A deposit is usually required before starting, with the balance due on delivery."
+        }
+      }
+    }
+  },
   "footer": {
-    "bio": "Full Stack Developer passionate about creating innovative web solutions.",
+    "bio": "Full Stack Developer passionate about building innovative web solutions.",
     "contact": "Contact",
-    "follow": "Follow Me",
+    "follow": "Follow me",
     "rights": "All rights reserved.",
     "privacy": "Privacy",
     "terms": "Terms",
-    "backToTop": "Back to top"
-  },
-
-  "projects": {
-    "title": "My Projects",
-    "subtitle": "Discover a selection of my most recent and relevant projects. Each project represents a unique challenge and learning opportunity.",
-    "technologies": "Technologies Used",
-    "keyFeatures": "Key Features",
-    "viewDemo": "View Demo",
-    "viewCode": "View Code",
-    "liveDemo": "Live Demo",
-    "developer": "developer",
-    "developers": "developers"
+    "backToTop": "Back to top",
+    "andOther": "and more"
   }
 }

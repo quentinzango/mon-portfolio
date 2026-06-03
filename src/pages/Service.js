@@ -49,9 +49,9 @@ const Services = () => {
   return (
     <div className="max-w-7xl mx-auto">
       <PageHeader
-        badge="Expertise"
-        title={t('services.title', 'Mes Services')}
-        subtitle={t('services.subtitle', 'Des solutions sur mesure pour répondre à vos besoins numériques')}
+        badge={t('services.badge')}
+        title={t('services.title')}
+        subtitle={t('services.subtitle')}
       />
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

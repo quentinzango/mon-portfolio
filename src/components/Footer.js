@@ -54,6 +54,9 @@ const Footer = () => {
               <span className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full">Django</span>
               <span className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full">Python</span>
               <span className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full">Tailwind CSS</span>
+              <span className="bg-blue-600/80 text-white text-xs px-3 py-1 rounded-full border border-blue-400/30">
+                {t('footer.andOther')}
+              </span>
             </div>
           </div>
 
@@ -76,7 +79,7 @@ const Footer = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>Douala, Cameroun</span>
+                <span>{t('contact.location')}</span>
               </li>
             </ul>
           </div>

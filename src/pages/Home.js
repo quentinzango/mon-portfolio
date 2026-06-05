@@ -4,6 +4,16 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
+import im1 from '../assets/im1.jpeg';
+import im2 from '../assets/im2.jpeg';
+import im3 from '../assets/im3.jpg';
+import im4 from '../assets/im4.jpg';
+import im5 from '../assets/im5.jpg';
+import im6 from '../assets/im6.png';
+import im7 from '../assets/im7.png';
+import im8 from '../assets/im8.png';
+import im9 from '../assets/im9.png';
+import im10 from '../assets/im10.png';
 import im13 from '../assets/im13.png';
 const heroImage = im13;
 
@@ -41,7 +51,25 @@ const Home = () => {
     [t, i18n.language]
   );
 
+  const [selectedDesign, setSelectedDesign] = useState(null);
+
   const activeCategory = skillCategories.find((c) => c.id === openSkillCategory) || skillCategories[0];
+
+  const graphicDesignItems = useMemo(
+    () => [
+      { src: im1, alt: 'Affiche créative', title: t('home.graphicDesignItems.0', 'Affiche créative & branding') },
+      { src: im2, alt: 'Illustration digitale', title: t('home.graphicDesignItems.1', 'Illustration digitale moderne') },
+      { src: im3, alt: 'Identité visuelle', title: t('home.graphicDesignItems.2', 'Identité visuelle impactante') },
+      { src: im4, alt: 'Packaging design', title: t('home.graphicDesignItems.3', 'Packaging design premium') },
+      { src: im5, alt: 'Branding', title: t('home.graphicDesignItems.4', 'Branding & direction artistique') },
+      { src: im6, alt: 'Design éditorial', title: t('home.graphicDesignItems.5', 'Design éditorial et mise en page') },
+      { src: im7, alt: 'Motion design', title: t('home.graphicDesignItems.6', 'Concept motion design') },
+      { src: im8, alt: 'Campagne sociale', title: t('home.graphicDesignItems.7', 'Visuel de campagne sociale') },
+      { src: im9, alt: 'Web design', title: t('home.graphicDesignItems.8', 'Design web responsive') },
+      { src: im10, alt: 'Visuel publicitaire', title: t('home.graphicDesignItems.9', 'Visuel publicitaire animé') },
+    ],
+    [t, i18n.language]
+  );
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -231,6 +259,95 @@ const Home = () => {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Graphisme */}
+      <section className="pb-16">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection>
+            <div className="text-center">
+              <span className="section-eyebrow">
+                {t('home.graphicDesignEyebrow', 'Graphiste & créateur visuel')}
+              </span>
+              <h2 className="mt-4 text-3xl sm:text-4xl font-display font-bold gradient-text">
+                {t('home.graphicDesignTitle', 'Mes réalisations graphiques')}
+              </h2>
+              <p className="mt-4 max-w-2xl text-lg text-theme-muted mx-auto">
+                {t('home.graphicDesignSubtitle', 'Découvrez mes designs et créations visuelles, cliquables pour une vue agrandie.')}
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection>
+            <div className="mt-12 graphic-design-ring">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ repeat: Infinity, duration: 36, ease: 'linear' }}
+                className="design-ring"
+              >
+                {graphicDesignItems.map((item, index) => {
+                  const angle = index * (360 / graphicDesignItems.length);
+                  return (
+                    <div
+                      key={item.alt}
+                      className="design-wrapper"
+                      style={{ transform: `rotate(${angle}deg)` }}
+                    >
+                      <motion.button
+                        type="button"
+                        whileHover={{ scale: 1.08 }}
+                        className="design-tile"
+                        style={{ transform: `translate(var(--design-radius, 220px)) rotate(-${angle}deg)` }}
+                        onClick={() => setSelectedDesign(item)}
+                        aria-label={item.title}
+                      >
+                        <img src={item.src} alt={item.alt} loading="lazy" />
+                        <div className="design-label">{item.title}</div>
+                      </motion.button>
+                    </div>
+                  );
+                })}
+              </motion.div>
+            </div>
+          </AnimatedSection>
+
+          <AnimatePresence>
+            {selectedDesign && (
+              <motion.div
+                className="design-modal-backdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedDesign(null)}
+              >
+                <motion.div
+                  className="design-modal-card"
+                  initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 20, scale: 0.96 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setSelectedDesign(null)}
+                    className="design-modal-close"
+                    aria-label={t('home.closeDesign', 'Fermer')}
+                  >
+                    ×
+                  </button>
+                  <img src={selectedDesign.src} alt={selectedDesign.alt} className="design-modal-image" />
+                  <div className="px-6 py-5">
+                    <h3 className="text-xl font-semibold text-theme">{selectedDesign.title}</h3>
+                    <p className="mt-2 text-theme-muted text-sm">
+                      {t('home.graphicDesignCaption', 'Clique pour agrandir chaque design.')}
+                    </p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 

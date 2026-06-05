@@ -46,6 +46,11 @@
     "aboutTitle": "À propos de moi",
     "aboutText1": "Développeur passionné avec une expérience dans la création d'applications web et mobiles réactives.",
     "aboutText2": "Je me spécialise dans le développement full-stack, avec une expertise dans la création d'applications web modernes, performantes et évolutives.",
+    "graphicDesignEyebrow": "Graphiste & créateur visuel",
+    "graphicDesignTitle": "Mes réalisations graphiques",
+    "graphicDesignSubtitle": "Découvrez quelques une de mes designs et créations visuelles.",
+    "graphicDesignCaption": "Clique pour agrandir chaque design.",
+    "closeDesign": "Fermer",
     "learnMore": "En savoir plus →"
   },
   "about": {
@@ -167,6 +172,10 @@
     "consulting": {
       "title": "Consulting",
       "description": "Conseils d'experts pour votre projet numérique."
+    },
+    "graphic": {
+      "title": "Graphisme & Design",
+      "description": "Création de designs visuels, branding et identités visuelles pour votre entreprise."
     },
     "api": {
       "title": "Intégration d'API",

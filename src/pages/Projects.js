@@ -78,7 +78,7 @@ const Projects = () => {
       <div className="space-y-24">
         {projects.map((project, index) => (
           <AnimatedSection key={project.id} delay={index * 0.2}>
-            <div className="h-[600px]">
+            <div className="min-h-[600px]">
               <ProjectCard project={project} />
             </div>
           </AnimatedSection>

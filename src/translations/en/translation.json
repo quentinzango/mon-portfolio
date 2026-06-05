@@ -46,6 +46,11 @@
     "aboutTitle": "About me",
     "aboutText1": "Passionate developer experienced in building modern, responsive web and mobile applications.",
     "aboutText2": "I specialize in full-stack development, with expertise in modern, performant and scalable web applications.",
+    "graphicDesignEyebrow": "Graphic designer & visual creator",
+    "graphicDesignTitle": "My graphic work",
+    "graphicDesignSubtitle": "Explore my visual design projects, clickable for a larger view.",
+    "graphicDesignCaption": "Click to enlarge each design.",
+    "closeDesign": "Close",
     "learnMore": "Learn more →"
   },
   "about": {
@@ -167,6 +172,10 @@
     "consulting": {
       "title": "Consulting",
       "description": "Expert advice for your digital project."
+    },
+    "graphic": {
+      "title": "Graphic Design",
+      "description": "Creating visual designs, branding and visual identities for your business."
     },
     "api": {
       "title": "API Integration",

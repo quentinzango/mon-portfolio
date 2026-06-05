@@ -40,6 +40,11 @@ const Services = () => {
       icon: '💡'
     },
     {
+      title: t('services.graphic.title', 'Graphisme & Design'),
+      description: t('services.graphic.description', 'Création de designs visuels, branding et identités visuelles pour votre entreprise.'),
+      icon: '🎭'
+    },
+    {
       title: t('services.api.title', 'Intégration d\'API'),
       description: t('services.api.description', 'Connexion et intégration de services tiers et API externes pour étendre les fonctionnalités de votre application.'),
       icon: '🔌'

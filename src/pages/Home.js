@@ -4,17 +4,16 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
-import im1 from '../assets/im1.jpeg';
-import im2 from '../assets/im2.jpeg';
+import im1 from '../assets/im1.png';
+import im2 from '../assets/im2.png';
 import im3 from '../assets/im3.jpg';
-import im4 from '../assets/im4.jpg';
-import im5 from '../assets/im5.jpg';
+import ims from '../assets/ims.png';
 import im6 from '../assets/im6.png';
-import im7 from '../assets/im7.png';
-import im8 from '../assets/im8.png';
-import im9 from '../assets/im9.png';
-import im10 from '../assets/im10.png';
 import im13 from '../assets/im13.png';
+import imc from '../assets/imc.png';
+import imv from '../assets/imv.png';
+import imn from '../assets/imn.png';
+import imq from '../assets/imq.png';
 const heroImage = im13;
 
 const Home = () => {
@@ -60,13 +59,13 @@ const Home = () => {
       { src: im1, alt: 'Affiche créative', title: t('home.graphicDesignItems.0', 'Affiche créative & branding') },
       { src: im2, alt: 'Illustration digitale', title: t('home.graphicDesignItems.1', 'Illustration digitale moderne') },
       { src: im3, alt: 'Identité visuelle', title: t('home.graphicDesignItems.2', 'Identité visuelle impactante') },
-      { src: im4, alt: 'Packaging design', title: t('home.graphicDesignItems.3', 'Packaging design premium') },
-      { src: im5, alt: 'Branding', title: t('home.graphicDesignItems.4', 'Branding & direction artistique') },
-      { src: im6, alt: 'Design éditorial', title: t('home.graphicDesignItems.5', 'Design éditorial et mise en page') },
-      { src: im7, alt: 'Motion design', title: t('home.graphicDesignItems.6', 'Concept motion design') },
-      { src: im8, alt: 'Campagne sociale', title: t('home.graphicDesignItems.7', 'Visuel de campagne sociale') },
-      { src: im9, alt: 'Web design', title: t('home.graphicDesignItems.8', 'Design web responsive') },
-      { src: im10, alt: 'Visuel publicitaire', title: t('home.graphicDesignItems.9', 'Visuel publicitaire animé') },
+      { src: im6, alt: 'Packaging design', title: t('home.graphicDesignItems.3', 'Packaging design premium') },
+      { src: ims, alt: 'Branding', title: t('home.graphicDesignItems.4', 'Branding & direction artistique') },
+      { src: ims, alt: 'Design éditorial', title: t('home.graphicDesignItems.5', 'Design éditorial et mise en page') },
+      { src: imc, alt: 'Motion design', title: t('home.graphicDesignItems.6', 'Concept motion design') },
+      { src: imv, alt: 'Campagne sociale', title: t('home.graphicDesignItems.7', 'Visuel de campagne sociale') },
+      { src: imn, alt: 'Web design', title: t('home.graphicDesignItems.8', 'Design web responsive') },
+      { src: imq, alt: 'Visuel publicitaire', title: t('home.graphicDesignItems.9', 'Visuel publicitaire animé') },
     ],
     [t, i18n.language]
   );
@@ -126,13 +125,17 @@ const Home = () => {
                 transition={{ duration: 0.7, delay: 0.2 }}
                 className="relative flex justify-center"
               >
-                <div className="glow-ring rounded-2xl p-[3px] max-w-md w-full">
-                  <div className="rounded-2xl overflow-hidden bg-slate-900/80 p-2">
+                <div className="glow-ring rounded-2xl p-[3px] max-w-md w-full aspect-square max-h-[520px] min-h-[420px]">
+                  <div className="rounded-2xl overflow-hidden bg-slate-900/80 p-2 h-full">
                     <img
                       src={heroImage}
                       alt="Zango Quentin"
-                      className="w-full h-auto rounded-xl animate-float"
+                      width={400}
+                      height={400}
+                      className="w-full h-full object-cover rounded-xl"
                       loading="eager"
+                      fetchpriority="high"
+                      decoding="async"
                     />
                   </div>
                 </div>
@@ -281,11 +284,7 @@ const Home = () => {
 
           <AnimatedSection>
             <div className="mt-12 graphic-design-ring">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ repeat: Infinity, duration: 36, ease: 'linear' }}
-                className="design-ring"
-              >
+              <div className="design-ring design-ring-spin">
                 {graphicDesignItems.map((item, index) => {
                   const angle = index * (360 / graphicDesignItems.length);
                   return (
@@ -302,13 +301,13 @@ const Home = () => {
                         onClick={() => setSelectedDesign(item)}
                         aria-label={item.title}
                       >
-                        <img src={item.src} alt={item.alt} loading="lazy" />
+                        <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                         <div className="design-label">{item.title}</div>
                       </motion.button>
                     </div>
                   );
                 })}
-              </motion.div>
+              </div>
             </div>
           </AnimatedSection>
 
@@ -337,7 +336,7 @@ const Home = () => {
                   >
                     ×
                   </button>
-                  <img src={selectedDesign.src} alt={selectedDesign.alt} className="design-modal-image" />
+                  <img src={selectedDesign.src} alt={selectedDesign.alt} className="design-modal-image" loading="lazy" decoding="async" />
                   <div className="px-6 py-5">
                     <h3 className="text-xl font-semibold text-theme">{selectedDesign.title}</h3>
                     <p className="mt-2 text-theme-muted text-sm">

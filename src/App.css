@@ -171,6 +171,20 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.design-ring-spin {
+  animation: slow-spin 36s linear infinite;
+  will-change: transform;
+}
+
 /* Animation pour le bouton de retour en haut */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }

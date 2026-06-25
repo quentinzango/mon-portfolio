@@ -1,3 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
+# Bloquer tous les robots pour éviter les requêtes excessives.
 User-agent: *
-Disallow:
+Disallow: /

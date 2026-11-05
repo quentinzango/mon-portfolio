@@ -4,10 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
-import im1 from '../assets/im1 (1).png';
+import im1 from '../assets/im1.png';
 import im2 from '../assets/im2.png';
 import im3 from '../assets/im3.jpg';
 import ims from '../assets/ims.png';
+import rollUp from '../assets/roll up.png';
 import im6 from '../assets/im6.png';
 import im13 from '../assets/im13.png';
 import imc from '../assets/imc.png';
@@ -56,16 +57,16 @@ const Home = () => {
 
   const graphicDesignItems = useMemo(
     () => [
-      { src: im1, alt: 'Affiche créative', title: t('home.graphicDesignItems.0', 'Affiche créative & branding') },
-      { src: im2, alt: 'Illustration digitale', title: t('home.graphicDesignItems.1', 'Illustration digitale moderne') },
-      { src: im3, alt: 'Identité visuelle', title: t('home.graphicDesignItems.2', 'Identité visuelle impactante') },
-      { src: im6, alt: 'Packaging design', title: t('home.graphicDesignItems.3', 'Packaging design premium') },
-      { src: ims, alt: 'Branding', title: t('home.graphicDesignItems.4', 'Branding & direction artistique') },
-      { src: ims, alt: 'Design éditorial', title: t('home.graphicDesignItems.5', 'Design éditorial et mise en page') },
-      { src: imc, alt: 'Motion design', title: t('home.graphicDesignItems.6', 'Concept motion design') },
-      { src: imv, alt: 'Campagne sociale', title: t('home.graphicDesignItems.7', 'Visuel de campagne sociale') },
-      { src: imn, alt: 'Web design', title: t('home.graphicDesignItems.8', 'Design web responsive') },
-      { src: imq, alt: 'Visuel publicitaire', title: t('home.graphicDesignItems.9', 'Visuel publicitaire animé') },
+      { src: im1, alt: 'Affiche créative', title: t('home.graphicDesignItems.0', 'Affiche promotionnelle & branding') },
+      { src: im2, alt: 'Illustration digitale', title: t('home.graphicDesignItems.1', 'Illustration digitale éditoriale') },
+      { src: im3, alt: 'Identité visuelle', title: t('home.graphicDesignItems.2', 'Identité visuelle de marque') },
+      { src: im6, alt: 'Packaging design', title: t('home.graphicDesignItems.3', 'Packaging & design produit') },
+      { src: ims, alt: 'Branding', title: t('home.graphicDesignItems.4', 'Direction artistique & visuel branding') },
+      { src: rollUp, alt: 'Roll up', title: t('home.graphicDesignItems.5', 'Roll-up de communication visuelle') },
+      { src: imc, alt: 'Motion design', title: t('home.graphicDesignItems.6', 'Concept motion design / visuel dynamique') },
+      { src: imv, alt: 'Campagne sociale', title: t('home.graphicDesignItems.7', 'Campagne sociale & visuel digital') },
+      { src: imn, alt: 'Carte d\'invitation', title: t('home.graphicDesignItems.8', 'Carte d\'invitation & design événementiel') },
+      { src: imq, alt: 'Visuel publicitaire', title: t('home.graphicDesignItems.9', 'Visuel publicitaire & marketing digital') },
     ],
     [t]
   );
@@ -94,15 +95,41 @@ const Home = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
+      <section className="pt-2 pb-4 sm:pt-4 sm:pb-6">
+        <div className="glass-panel glow-ring rounded-3xl px-5 py-5 sm:px-8 sm:py-7">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <span className="section-eyebrow">Merci</span>
+              <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-display font-bold gradient-text leading-tight">
+                Merci d’avoir pris le temps de visiter mon portfolio
+              </h2>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 sm:justify-end">
+              {['Design', 'Code', 'Expérience'].map((item) => (
+                <span
+                  key={item}
+                  className="inline-flex items-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-cyan-300"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+          <p className="mt-4 max-w-3xl text-sm sm:text-base text-theme-muted leading-relaxed">
+            Chaque projet ici est pensé pour résoudre des problèmes concrets, créer des expériences mémorables et transformer des idées en solutions digitales élégantes.
+          </p>
+        </div>
+      </section>
+
       {/* Hero */}
       <section className="relative py-6 sm:py-10">
         <AnimatedSection>
-          <div className="glass-panel glow-ring rounded-3xl p-8 sm:p-12 lg:p-14 overflow-hidden relative">
+          <div className="glass-panel glow-ring rounded-3xl p-6 sm:p-10 lg:p-14 overflow-hidden relative">
             <div
               className="absolute top-0 right-0 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"
               aria-hidden="true"
             />
-            <div className="relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div className="relative z-10 grid gap-8 lg:grid-cols-2 lg:gap-14 items-center">
               <div className="text-center lg:text-left">
                 <motion.span
                   initial={{ opacity: 0, y: 10 }}
@@ -115,7 +142,7 @@ const Home = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-display font-bold gradient-text leading-[1.1] tracking-tight"
+                  className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold gradient-text leading-[1.06] tracking-tight break-words"
                 >
                   {t('home.title', 'Développeur Full Stack Passionné')}
                 </motion.h1>
@@ -123,7 +150,7 @@ const Home = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="mt-6 text-lg sm:text-xl text-theme-muted max-w-xl mx-auto lg:mx-0"
+                  className="mt-5 text-base sm:text-lg lg:text-xl text-theme-muted max-w-xl mx-auto lg:mx-0 leading-relaxed"
                 >
                   {t('home.subtitle', 'Je crée des expériences web exceptionnelles avec des technologies modernes.')}
                 </motion.p>
@@ -131,7 +158,7 @@ const Home = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.35 }}
-                  className="mt-10 flex flex-wrap justify-center lg:justify-start gap-4"
+                  className="mt-8 flex flex-wrap justify-center lg:justify-start gap-3"
                 >
                   <Link to="/projects" className="btn-glow">
                     {t('home.seeProjects', 'Voir mes projets')}
@@ -145,10 +172,10 @@ const Home = () => {
                 initial={{ opacity: 0, scale: 0.92 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="relative flex justify-center"
+                className="relative flex justify-center w-full"
               >
-                <div className="glow-ring rounded-2xl p-[3px] max-w-md w-full aspect-square max-h-[520px] min-h-[420px]">
-                  <div className="rounded-2xl overflow-hidden bg-slate-900/80 p-2 h-full">
+                <div className="glow-ring rounded-2xl p-[3px] w-full max-w-[420px] aspect-[4/5] sm:aspect-square lg:max-w-md lg:w-full lg:min-h-[420px] lg:aspect-square">
+                  <div className="rounded-2xl overflow-hidden bg-slate-900/80 p-2 h-full w-full">
                     <img
                       src={heroImage}
                       alt="Zango Quentin"

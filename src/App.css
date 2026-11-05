@@ -185,6 +185,12 @@
   will-change: transform;
 }
 
+@media (max-width: 767px) {
+  .design-ring-spin {
+    animation: none !important;
+  }
+}
+
 /* Animation pour le bouton de retour en haut */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }

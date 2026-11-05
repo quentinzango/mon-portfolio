@@ -10,12 +10,13 @@ import im3 from '../assets/im3.jpg';
 import ims from '../assets/ims.png';
 import rollUp from '../assets/roll up.png';
 import im6 from '../assets/im6.png';
+import im10 from '../assets/im10.png';
 import im13 from '../assets/im13.png';
 import imc from '../assets/imc.png';
 import imv from '../assets/imv.png';
 import imn from '../assets/imn.png';
 import imq from '../assets/imq.png';
-const heroImage = im13;
+const heroImage = im10;
 
 const Home = () => {
   const { t } = useTranslation();
@@ -470,7 +471,7 @@ const Home = () => {
                 <div className="relative rounded-2xl overflow-hidden glass-card p-2">
                   <img
                     className="w-full h-auto rounded-xl"
-                    src={heroImage}
+                    src={im13}
                     alt="À propos de moi"
                     loading="lazy"
                   />

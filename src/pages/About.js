@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import AnimatedSection from '../components/AnimatedSection';
 import PageHeader from '../components/PageHeader';
@@ -8,7 +7,7 @@ const videoPreview = 'https://placehold.co/1280x720/jpg?text=Presentation+Video'
 const myVideo = '';
 
 const About = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const education = useMemo(
     () => [
@@ -27,7 +26,7 @@ const About = () => {
         description: t('about.educationList.deug.description'),
       },
     ],
-    [t, i18n.language]
+    [t]
   );
 
   const experience = useMemo(
@@ -54,7 +53,7 @@ const About = () => {
         description: t('about.experienceList.uni2grow.description'),
       },
     ],
-    [t, i18n.language]
+    [t]
   );
 
   const certifications = useMemo(

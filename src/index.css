@@ -22,17 +22,43 @@ html {
   scroll-behavior: smooth;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 body {
   margin: 0;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   color: var(--text-soft);
   background: #070b14;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .page-shell__beam,
+  .page-shell__orb,
+  .design-ring-spin {
+    animation: none !important;
+  }
+}
+
 h1, h2, h3, h4 {
-  font-family: Syne, system-ui, sans-serif;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
 }
 
 /* ——— Fonds par page ——— */
@@ -82,6 +108,21 @@ h1, h2, h3, h4 {
 .page-shell__orb--1 { width: 480px; height: 480px; top: -140px; left: -120px; animation-delay: 0s; }
 .page-shell__orb--2 { width: 420px; height: 420px; top: 35%; right: -140px; animation-delay: -4s; }
 .page-shell__orb--3 { width: 360px; height: 360px; bottom: -100px; left: 25%; animation-delay: -8s; }
+
+@media (max-width: 768px) {
+  .page-shell__beam {
+    display: none;
+  }
+
+  .page-shell__orb {
+    filter: blur(55px);
+    opacity: 0.75;
+  }
+
+  .page-shell__orb--1 { width: 220px; height: 220px; top: -50px; left: -40px; }
+  .page-shell__orb--2 { width: 180px; height: 180px; top: 48%; right: -30px; }
+  .page-shell__orb--3 { width: 160px; height: 160px; bottom: -40px; left: 18%; }
+}
 
 /* Accueil — cosmos / innovation */
 .page-shell--home .page-shell__gradient {
@@ -517,6 +558,11 @@ h1, h2, h3, h4 {
 @media (max-width: 640px) {
   .graphic-design-ring {
     --design-radius: 140px;
+  }
+
+  .design-tile {
+    width: 120px;
+    height: 120px;
   }
 }
 

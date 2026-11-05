@@ -4,13 +4,13 @@ import { useTranslation } from 'react-i18next';
 import ProjectCard from '../components/ProjectCard';
 import AnimatedSection from '../components/AnimatedSection';
 import PageHeader from '../components/PageHeader';
-import ima from '../assets/ima.png';
+import ima from '../assets/ima (1).png';
 import im7 from '../assets/im7.png';
 import imb from '../assets/imb.png';
 const im9 = 'https://placehold.co/1200x800/png?text=Projet+3';
 const im10 = ima;
 const Projects = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const projects = useMemo(
     () => [
@@ -65,7 +65,7 @@ const Projects = () => {
         demoUrl: 'https://www.universdesgadgets.com/',
       },
     ],
-    [t, i18n.language]
+    [t]
   );
 
   return (

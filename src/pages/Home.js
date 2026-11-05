@@ -1,10 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
-import im1 from '../assets/im1.png';
+import im1 from '../assets/im1 (1).png';
 import im2 from '../assets/im2.png';
 import im3 from '../assets/im3.jpg';
 import ims from '../assets/ims.png';
@@ -17,7 +17,7 @@ import imq from '../assets/imq.png';
 const heroImage = im13;
 
 const Home = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [openSkillCategory, setOpenSkillCategory] = useState('languages');
 
   const skillCategories = useMemo(
@@ -47,12 +47,12 @@ const Home = () => {
         items: t('home.skills.categories.third-party.items', { returnObjects: true }),
       },
     ],
-    [t, i18n.language]
+    [t]
   );
 
   const [selectedDesign, setSelectedDesign] = useState(null);
-
-  const activeCategory = skillCategories.find((c) => c.id === openSkillCategory) || skillCategories[0];
+  const [visibleDesigns, setVisibleDesigns] = useState({});
+  const galleryRef = useRef(null);
 
   const graphicDesignItems = useMemo(
     () => [
@@ -67,8 +67,30 @@ const Home = () => {
       { src: imn, alt: 'Web design', title: t('home.graphicDesignItems.8', 'Design web responsive') },
       { src: imq, alt: 'Visuel publicitaire', title: t('home.graphicDesignItems.9', 'Visuel publicitaire animé') },
     ],
-    [t, i18n.language]
+    [t]
   );
+
+  const activeCategory = skillCategories.find((c) => c.id === openSkillCategory) || skillCategories[0];
+
+  useEffect(() => {
+    const nodes = galleryRef.current ? galleryRef.current.querySelectorAll('[data-design-index]') : [];
+    if (!nodes.length) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const index = Number(entry.target.dataset.designIndex);
+          setVisibleDesigns((prev) => ({ ...prev, [index]: true }));
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: '200px 0px' }
+    );
+
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, [graphicDesignItems]);
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -134,8 +156,8 @@ const Home = () => {
                       height={400}
                       className="w-full h-full object-cover rounded-xl"
                       loading="eager"
-                      fetchpriority="high"
                       decoding="async"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
                 </div>
@@ -283,10 +305,11 @@ const Home = () => {
           </AnimatedSection>
 
           <AnimatedSection>
-            <div className="mt-12 graphic-design-ring">
+            <div ref={galleryRef} className="mt-12 graphic-design-ring">
               <div className="design-ring design-ring-spin">
                 {graphicDesignItems.map((item, index) => {
                   const angle = index * (360 / graphicDesignItems.length);
+                  const isVisible = Boolean(visibleDesigns[index]);
                   return (
                     <div
                       key={item.alt}
@@ -301,7 +324,25 @@ const Home = () => {
                         onClick={() => setSelectedDesign(item)}
                         aria-label={item.title}
                       >
-                        <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
+                        {isVisible ? (
+                          <img
+                            src={item.src}
+                            alt={item.alt}
+                            loading="lazy"
+                            decoding="async"
+                            width={148}
+                            height={148}
+                            sizes="(max-width: 640px) 120px, 148px"
+                            data-design-index={index}
+                            style={{ contentVisibility: 'auto' }}
+                          />
+                        ) : (
+                          <div
+                            data-design-index={index}
+                            className="w-[148px] h-[148px] rounded-xl bg-slate-800/80 border border-slate-700/50 animate-pulse"
+                            aria-hidden="true"
+                          />
+                        )}
                         <div className="design-label">{item.title}</div>
                       </motion.button>
                     </div>
@@ -336,7 +377,15 @@ const Home = () => {
                   >
                     ×
                   </button>
-                  <img src={selectedDesign.src} alt={selectedDesign.alt} className="design-modal-image" loading="lazy" decoding="async" />
+                  <img
+                    src={selectedDesign.src}
+                    alt={selectedDesign.alt}
+                    className="design-modal-image"
+                    loading="lazy"
+                    decoding="async"
+                    width={1200}
+                    height={900}
+                  />
                   <div className="px-6 py-5">
                     <h3 className="text-xl font-semibold text-theme">{selectedDesign.title}</h3>
                     <p className="mt-2 text-theme-muted text-sm">

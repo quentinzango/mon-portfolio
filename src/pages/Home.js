@@ -1,5 +1,8 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useGSAP } from '@gsap/react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
@@ -16,6 +19,11 @@ import imc from '../assets/imc.png';
 import imv from '../assets/imv.png';
 import imn from '../assets/imn.png';
 import imq from '../assets/imq.png';
+
+const reduceMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+gsap.registerPlugin(ScrollTrigger);
+
 const heroImage = im10;
 
 const Home = () => {
@@ -55,6 +63,64 @@ const Home = () => {
   const [selectedDesign, setSelectedDesign] = useState(null);
   const [visibleDesigns, setVisibleDesigns] = useState({});
   const galleryRef = useRef(null);
+  const homeRef = useRef(null);
+
+  const activeCategory = skillCategories.find((c) => c.id === openSkillCategory) || skillCategories[0];
+
+  useGSAP(() => {
+    if (!homeRef.current || reduceMotion) return undefined;
+
+    const ctx = gsap.context(() => {
+      gsap.from('[data-gsap-hero]', {
+        opacity: 0,
+        y: 48,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.12,
+      });
+
+      gsap.from('.skill-chip', {
+        opacity: 0,
+        y: 18,
+        duration: 0.7,
+        ease: 'back.out(1.4)',
+        stagger: 0.04,
+        scrollTrigger: {
+          trigger: '.skill-chip',
+          start: 'top 92%',
+          once: true,
+        },
+      });
+
+      gsap.utils.toArray('.design-wrapper').forEach((element) => {
+        gsap.from(element, {
+          opacity: 0,
+          scale: 0.72,
+          duration: 0.8,
+          ease: 'power3.out',
+          delay: 0.15,
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 85%',
+            once: true,
+          },
+        });
+      });
+
+      gsap.to('.graphic-design-ring', {
+        y: 18,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.graphic-design-ring',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+      });
+    }, homeRef);
+
+    return () => ctx.revert();
+  }, [activeCategory.id]);
 
   const graphicDesignItems = useMemo(
     () => [
@@ -71,8 +137,6 @@ const Home = () => {
     ],
     [t]
   );
-
-  const activeCategory = skillCategories.find((c) => c.id === openSkillCategory) || skillCategories[0];
 
   useEffect(() => {
     const nodes = galleryRef.current ? galleryRef.current.querySelectorAll('[data-design-index]') : [];
@@ -95,7 +159,7 @@ const Home = () => {
   }, [graphicDesignItems]);
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div ref={homeRef} className="max-w-7xl mx-auto">
       <section className="pt-2 pb-4 sm:pt-4 sm:pb-6">
         <div className="glass-panel glow-ring rounded-3xl px-5 py-5 sm:px-8 sm:py-7">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -133,6 +197,7 @@ const Home = () => {
             <div className="relative z-10 grid gap-8 lg:grid-cols-2 lg:gap-14 items-center">
               <div className="text-center lg:text-left">
                 <motion.span
+                  data-gsap-hero
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="section-eyebrow"
@@ -140,6 +205,7 @@ const Home = () => {
                   {t('home.heroBadge')}
                 </motion.span>
                 <motion.h1
+                  data-gsap-hero
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
@@ -148,6 +214,7 @@ const Home = () => {
                   {t('home.title', 'Développeur Full Stack Passionné')}
                 </motion.h1>
                 <motion.p
+                  data-gsap-hero
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
@@ -156,6 +223,7 @@ const Home = () => {
                   {t('home.subtitle', 'Je crée des expériences web exceptionnelles avec des technologies modernes.')}
                 </motion.p>
                 <motion.div
+                  data-gsap-hero
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.35 }}
@@ -170,6 +238,7 @@ const Home = () => {
                 </motion.div>
               </div>
               <motion.div
+                data-gsap-hero
                 initial={{ opacity: 0, scale: 0.92 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
@@ -210,17 +279,17 @@ const Home = () => {
             </div>
           </AnimatedSection>
 
-          <div className="mt-12 grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 items-start">
-            <div className="space-y-3">
-              {skillCategories.map((category, index) => {
-                const isActive = openSkillCategory === category.id;
-                return (
-                  <AnimatedSection key={category.id} delay={index * 0.07}>
+          <div className="mt-12 space-y-4">
+            {skillCategories.map((category, index) => {
+              const isActive = openSkillCategory === category.id;
+              return (
+                <AnimatedSection key={category.id} delay={index * 0.07}>
+                  <div className="glass-card-strong rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(34,211,238,0.12)]">
                     <MagneticButton
                       active={isActive}
                       onClick={() => setOpenSkillCategory(category.id)}
-                      className={`w-full px-6 py-5 rounded-2xl border border-slate-700/40 bg-slate-900/30 hover:border-cyan-500/30 transition-colors ${
-                        isActive ? '' : ''
+                      className={`w-full px-6 py-5 transition-all ${
+                        isActive ? 'bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-fuchsia-500/10' : 'bg-slate-900/15'
                       }`}
                     >
                       <div className="flex items-center justify-between gap-4">
@@ -233,84 +302,58 @@ const Home = () => {
                           </h3>
                         </div>
                         <span
-                          className={`text-xl transition-transform ${isActive ? "rotate-180" : ""}`}
+                          className={`text-xl transition-transform duration-300 ${isActive ? "rotate-180 text-cyan-300" : "text-slate-300"}`}
                           aria-hidden="true"
                         >
                           ⌄
                         </span>
                       </div>
                     </MagneticButton>
-                  </AnimatedSection>
-                );
-              })}
-            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="glass-card-strong rounded-3xl p-8 relative overflow-hidden"
-            >
-              <div
-                aria-hidden="true"
-                className="absolute -top-16 -right-24 w-80 h-80 rounded-full bg-cyan-500/15 blur-3xl"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute -bottom-20 -left-24 w-80 h-80 rounded-full bg-violet-500/15 blur-3xl"
-              />
-
-              <div className="relative">
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl" aria-hidden="true">
-                    {activeCategory.icon}
-                  </span>
-                  <div>
-                    <h3 className="text-2xl font-display font-bold text-theme">{activeCategory.title}</h3>
-                    <p className="text-theme-muted mt-1">
-                      {t('home.skillsPanelHint')}
-                    </p>
-                  </div>
-                </div>
-
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeCategory.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.25 }}
-                    className="mt-8"
-                  >
-                    <div className="flex flex-wrap gap-3">
-                      {activeCategory.items.map((item) => (
-                        <motion.span
-                          key={item}
-                          whileHover={{ y: -3, scale: 1.02 }}
-                          className="skill-chip"
+                    <AnimatePresence initial={false}>
+                      {isActive && (
+                        <motion.div
+                          key={category.id}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.28, ease: 'easeOut' }}
+                          className="overflow-hidden border-t border-white/10"
                         >
-                          {item}
-                        </motion.span>
-                      ))}
-                    </div>
+                          <div className="px-6 pb-6 pt-5">
+                            <div className="flex flex-wrap gap-3">
+                              {category.items.map((item) => (
+                                <motion.span
+                                  key={item}
+                                  whileHover={{ y: -3, scale: 1.02 }}
+                                  className="skill-chip"
+                                >
+                                  {item}
+                                </motion.span>
+                              ))}
+                            </div>
 
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.15 }}
-                      className="mt-8 flex items-center gap-3 text-theme-muted"
-                    >
-                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-cyan-500/10 border border-cyan-500/25">
-                        ✨
-                      </span>
-                      <p className="text-sm sm:text-base">
-                        {t(`home.skillsHints.${activeCategory.id}`)}
-                      </p>
-                    </motion.div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </motion.div>
+                            <motion.div
+                              initial={{ opacity: 0, y: 8 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.08 }}
+                              className="mt-5 flex items-start gap-3 rounded-2xl border border-cyan-400/25 bg-cyan-400/5 p-4 text-theme-muted"
+                            >
+                              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400/25 to-violet-500/25 border border-cyan-300/30 text-lg">
+                                ✨
+                              </span>
+                              <p className="text-sm sm:text-base leading-relaxed">
+                                {t(`home.skillsHints.${category.id}`)}
+                              </p>
+                            </motion.div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </AnimatedSection>
+              );
+            })}
           </div>
         </div>
       </section>

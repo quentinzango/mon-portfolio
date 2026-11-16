@@ -82,6 +82,12 @@
       }
     },
     "experienceList": {
+      "graphite": {
+        "year": "2026 - present",
+        "title": "Graphite",
+        "company": "At UNIVER DES GADGETS (U2G)",
+        "description": "I transform ideas into attractive and impactful visuals through the creation of logos, posters, flyers, advertising materials and visual identities."
+      },
       "meTech": {
         "year": "2025 - 2026",
         "title": "Developer Intern",
@@ -101,11 +107,7 @@
         "description": "3-month web development internship contributing to various company projects."
       }
     },
-    "certs": {
-      "dev": { "title": "Developer", "org": "OpenClassrooms - 2024" },
-      "react": { "title": "React", "org": "OpenClassrooms - 2024" },
-      "flutter": { "title": "Flutter", "org": "Coursera - 2023" }
-    }
+    "certificationsSoon": "Certifications will be added soon."
   },
   "projects": {
     "badge": "Showcase",

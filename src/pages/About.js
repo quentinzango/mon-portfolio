@@ -33,20 +33,27 @@ const About = () => {
     () => [
       {
         id: 1,
+        year: t('about.experienceList.graphite.year'),
+        title: t('about.experienceList.graphite.title'),
+        company: t('about.experienceList.graphite.company'),
+        description: t('about.experienceList.graphite.description'),
+      },
+      {
+        id: 2,
         year: t('about.experienceList.meTech.year'),
         title: t('about.experienceList.meTech.title'),
         company: t('about.experienceList.meTech.company'),
         description: t('about.experienceList.meTech.description'),
       },
       {
-        id: 2,
+        id: 3,
         year: t('about.experienceList.foormulo.year'),
         title: t('about.experienceList.foormulo.title'),
         company: t('about.experienceList.foormulo.company'),
         description: t('about.experienceList.foormulo.description'),
       },
       {
-        id: 3,
+        id: 4,
         year: t('about.experienceList.uni2grow.year'),
         title: t('about.experienceList.uni2grow.title'),
         company: t('about.experienceList.uni2grow.company'),
@@ -56,14 +63,7 @@ const About = () => {
     [t]
   );
 
-  const certifications = useMemo(
-    () => [
-      { id: 'dev', style: 'blue' },
-      { id: 'react', style: 'green' },
-      { id: 'flutter', style: 'purple' },
-    ],
-    []
-  );
+  const certifications = useMemo(() => [], []);
 
   // Compétences techniques
   const skills = [
@@ -213,23 +213,31 @@ const About = () => {
                   {t('about.certifications', 'Certifications')}
                 </h3>
                 <div className="space-y-4">
-                  {certifications.map((cert) => {
-                    const styles = {
-                      blue: { box: 'bg-blue-50', title: 'text-blue-800', org: 'text-blue-600' },
-                      green: { box: 'bg-green-50', title: 'text-green-800', org: 'text-green-600' },
-                      purple: { box: 'bg-purple-50', title: 'text-purple-800', org: 'text-purple-600' },
-                    }[cert.style];
-                    return (
-                      <div key={cert.id} className={`p-4 rounded-lg ${styles.box}`}>
-                        <h4 className={`font-medium ${styles.title}`}>
-                          {t(`about.certs.${cert.id}.title`)}
-                        </h4>
-                        <p className={`text-sm ${styles.org}`}>
-                          {t(`about.certs.${cert.id}.org`)}
-                        </p>
-                      </div>
-                    );
-                  })}
+                  {certifications.length > 0 ? (
+                    certifications.map((cert) => {
+                      const styles = {
+                        blue: { box: 'bg-blue-50', title: 'text-blue-800', org: 'text-blue-600' },
+                        green: { box: 'bg-green-50', title: 'text-green-800', org: 'text-green-600' },
+                        purple: { box: 'bg-purple-50', title: 'text-purple-800', org: 'text-purple-600' },
+                      }[cert.style];
+                      return (
+                        <div key={cert.id} className={`p-4 rounded-lg ${styles.box}`}>
+                          <h4 className={`font-medium ${styles.title}`}>
+                            {t(`about.certs.${cert.id}.title`)}
+                          </h4>
+                          <p className={`text-sm ${styles.org}`}>
+                            {t(`about.certs.${cert.id}.org`)}
+                          </p>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <div className="p-4 rounded-lg border border-dashed border-slate-600 bg-slate-900/30">
+                      <p className="text-sm text-theme-muted">
+                        {t('about.certificationsSoon', 'Les certifications seront ajoutées prochainement.')}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </AnimatedSection>
